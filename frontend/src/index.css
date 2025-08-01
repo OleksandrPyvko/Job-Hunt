@@ -1,0 +1,58 @@
+:root {
+  --bg-color: oklch(98.918% 0.00738 152.655);
+  --bg-color: oklch(97.645% 0.03704 151.572);
+  --text-color: #1a1a1a;
+  --accent-color: #00af35;
+  --card-bg: oklch(100% 0.00011 271.152);
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #f5f5f5;
+  --accent-color: #818cf8;
+  --card-bg: #2a2a2a;
+}
+
+@font-face {
+  font-family: "Author";
+  src: url("/fonts/Author-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Author-semibold";
+  src: url("/fonts/Author-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Author-bold";
+  src: url("/fonts/Author-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  font-family: "Author", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 18px;
+  min-height: 100vh;
+  font-weight: 70;
+  background-color: var(--bg-color);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.bold {
+  font-family: "Author-bold", sans-serif;
+  font-weight: 700;
+}

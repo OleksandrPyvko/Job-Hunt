@@ -1,0 +1,22 @@
+.application-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.application-form input {
+  border: 1px solid #cacaca;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.application-form input:focus {
+  outline: 1px solid #00af3469;
+  background-color: #f6fff9;
+}
+
+.application-form textarea {
+  min-width: 200px;
+  min-height: 80px;
+  padding: 0.5rem;
+}
