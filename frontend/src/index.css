@@ -1,6 +1,7 @@
 :root {
   --bg-color: oklch(98.918% 0.00738 152.655);
-  --bg-color: oklch(97.645% 0.03704 151.572);
+  /* --bg-color: oklch(97.645% 0.03704 151.572); */
+  --bg-color: oklch(96.196% 0.02093 236.928);
   --text-color: #1a1a1a;
   --accent-color: #00af35;
   --card-bg: oklch(100% 0.00011 271.152);

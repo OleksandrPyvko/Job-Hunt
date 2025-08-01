@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 import classes from "./Dashboard.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Modal from "../components/Modal";
 import ApplicationForm from "../components/ApplicationForm";
-import addApplication from "../api/http";
+import { useAuth } from "../context";
 
 type ApplicationType = {
   company: string;
@@ -16,15 +16,17 @@ type ApplicationType = {
   notes?: string;
 };
 
-const TestApplication: ApplicationType = {
-  company: "Yoy",
-  status: "applied",
-  position: "FE",
-  location: "remote",
-  applied: "10-7=2025",
-};
+// const TestApplication: ApplicationType = {
+//   company: "Yoy",
+//   status: "applied",
+//   position: "FE",
+//   location: "remote",
+//   applied: "10-7=2025",
+// };
 
 function Dashboard() {
+  const { tokenData } = useAuth();
+
   const dialog = useRef<HTMLDialogElement>(null);
 
   function handleAddApplication() {
@@ -38,21 +40,22 @@ function Dashboard() {
   return (
     <>
       <div className={classes.heading}>
-        <h2>Welcome, Oleksandr</h2>
+        <h2>Welcome, {tokenData?.username}</h2>
         <p>You have 3 interviews...</p>
       </div>
       <div className={classes.stats}>
-        {/* //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! make it as a graph component  */}
-        <div>
-          <p>📋 12 Applications</p>
-          <p>🟢 1 Offer</p>
-          <p>❌ 4 Rejections</p>
-          <p>🗓️ 3 Interviews</p>
-        </div>
+        <p>📋 12 Applications</p>
         <div className={classes["stat-container"]}>
-          <div className={classes["stat-row1"]}>8%</div>
-          <div className={classes["stat-row2"]}>33%</div>
-          <div className={classes["stat-row3"]}>25%</div>
+          <div>
+            <p>🟢 1 Offer</p>
+            <p>❌ 4 Rejections</p>
+            <p>🗓️ 3 Interviews</p>
+          </div>
+          <div className={classes.graph}>
+            <div className={classes["stat-row1"]}>8%</div>
+            <div className={classes["stat-row2"]}>33%</div>
+            <div className={classes["stat-row3"]}>25%</div>
+          </div>
         </div>
       </div>
 
@@ -78,7 +81,7 @@ function Dashboard() {
       </div>
       <div className={classes.actions}>
         <Modal ref={dialog} onClose={handleCloseDialog}>
-          <ApplicationForm ref={dialog}/>
+          <ApplicationForm ref={dialog} />
         </Modal>
         <Button onClick={handleAddApplication}>+ Add new application</Button>
       </div>
