@@ -94,6 +94,7 @@ p {
 
 .signupButton {
   width: 100%;
+  margin-bottom: 10px;
   height: 50px;
   background-color: #007bff;
   color: white;
@@ -105,6 +106,7 @@ p {
 
 .loginButton {
   width: 100%;
+  margin-bottom: 10px;
   height: 50px;
   background-color: #28a745;
   color: white;
@@ -143,7 +145,7 @@ p {
   cursor: pointer;
 }
 
-.disabled{
+.disabled {
   cursor: default;
 }
 

@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 import classes from "./Dashboard.module.css";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Modal from "../components/Modal";
 import ApplicationForm from "../components/ApplicationForm";
 import { useAuth } from "../context";
+import { getUserApplications } from "../api/http";
+import Overview from "../components/Overview";
 
 type ApplicationType = {
   company: string;
@@ -16,17 +18,11 @@ type ApplicationType = {
   notes?: string;
 };
 
-// const TestApplication: ApplicationType = {
-//   company: "Yoy",
-//   status: "applied",
-//   position: "FE",
-//   location: "remote",
-//   applied: "10-7=2025",
-// };
-
 function Dashboard() {
   const { tokenData } = useAuth();
-
+  const [userApplications, setUserApplications] = useState<ApplicationType[]>(
+    []
+  );
   const dialog = useRef<HTMLDialogElement>(null);
 
   function handleAddApplication() {
@@ -37,27 +33,38 @@ function Dashboard() {
     dialog.current?.close();
   }
 
+  useEffect(() => {
+    if (tokenData === null) return;
+
+    async function fetchApplications() {
+      try {
+        if (!tokenData?.userId) {
+          console.error("User ID is not available in token data");
+          return;
+        }
+
+        if (tokenData?.userId) {
+          const data = await getUserApplications(tokenData?.userId);
+          setUserApplications(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch user applications:", error);
+      }
+    }
+
+    fetchApplications();
+  }, [tokenData]);
+
   return (
     <>
+    
       <div className={classes.heading}>
-        <h2>Welcome, {tokenData?.username}</h2>
-        <p>You have 3 interviews...</p>
+        <h2 className={classes.greeting}>Welcome, {tokenData?.username}</h2>
       </div>
-      <div className={classes.stats}>
-        <p>📋 12 Applications</p>
-        <div className={classes["stat-container"]}>
-          <div>
-            <p>🟢 1 Offer</p>
-            <p>❌ 4 Rejections</p>
-            <p>🗓️ 3 Interviews</p>
-          </div>
-          <div className={classes.graph}>
-            <div className={classes["stat-row1"]}>8%</div>
-            <div className={classes["stat-row2"]}>33%</div>
-            <div className={classes["stat-row3"]}>25%</div>
-          </div>
-        </div>
-      </div>
+      
+
+    <div className={classes.dashboard}>
+      <Overview />
 
       <div className={classes.overview}>
         <div className={classes["overview-item"]}>
@@ -85,6 +92,7 @@ function Dashboard() {
         </Modal>
         <Button onClick={handleAddApplication}>+ Add new application</Button>
       </div>
+    </div>
     </>
   );
 }

@@ -46,6 +46,23 @@ export async function getApplicationById(id: string) {
   }
 }
 
+export async function getUserApplications (userId: string) {
+  
+        const res = await fetch(
+          `http://localhost:3000/applications/user/${userId}`
+        );
+        if (!res.ok) {
+          throw new Error("Failed to fetch applications");
+        }
+        const data = await res.json();
+        if (!Array.isArray(data)) {
+          throw new Error("Invalid data format from server");
+        }
+
+        return data;
+
+}
+
 export async function deleteApplication(id: string) {
   try {
     const res = await fetch(`http://localhost:3000/applications/${id}`, {

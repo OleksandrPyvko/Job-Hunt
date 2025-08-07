@@ -4,6 +4,7 @@ import { createContext, useContext, useState } from "react";
 type MyJWTPayload = {
   username?: string;
   id?: string;
+  userId?: string;
 };
 
 type AuthContextType = {

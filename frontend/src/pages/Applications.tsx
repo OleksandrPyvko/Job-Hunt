@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./Applications.module.css";
 import { jwtDecode } from "jwt-decode";
-import { deleteApplication } from "../api/http";
+import { deleteApplication, getUserApplications } from "../api/http";
+import { useAuth } from "../context";
+import ApplicationModal from "../components/ApplicationModal";
 
 type ApplicationType = {
   _id: string;
@@ -24,25 +26,15 @@ function Applications() {
   const [data, setData] = useState<ApplicationType[]>([]);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  //////!!!!!!! ADD DELETING INDICATOR ON DELETION AND CHANGING STATE WILL RERENDER LIST OF APPLICATIONS
+  //**********************Add filter status based on status *********************** */
   const dialog = useRef<HTMLDialogElement | null>(null);
-  const token = localStorage.getItem("token");
-  const tokenData = token ? jwtDecode<MyJWTPayload>(token) : {};
+  const { tokenData } = useAuth();
 
   useEffect(() => {
     async function getData() {
       setIsLoading(true);
       try {
-        const res = await fetch(
-          `http://localhost:3000/applications/user/${tokenData.userId}`
-        );
-        if (!res.ok) {
-          throw new Error("Failed to fetch applications");
-        }
-        const data = await res.json();
-        if (!Array.isArray(data)) {
-          throw new Error("Invalid data format from server");
-        }
+        const data = await getUserApplications(tokenData?.userId || "");
         setData(data);
       } catch (e) {
         setData([]);
@@ -72,11 +64,13 @@ function Applications() {
   }
   if (isLoading) return <p>Loading...</p>;
 
-  if (data?.length === 0)
-    return <p>No data has been found {tokenData.userId}</p>;
+  if (data?.length === 0) return <p>No data has been found</p>;
 
   return (
     <>
+      {data.map((i) => (
+        <ApplicationModal id={i._id} />
+      ))}
       <h2>Applications</h2>
       <div>
         <ul className={classes.list}>

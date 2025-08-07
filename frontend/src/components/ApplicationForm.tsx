@@ -76,8 +76,6 @@ function ApplicationForm({ ref }: FormProps) {
       <input name="location" type="text" />
       <label>Applied on</label>
       <input name="applied" defaultValue={formattedDate} type="date" />
-      {/* <label>Interview</label>
-      <input type="text" /> */}
       <label>Notes</label>
       <textarea name="notes" />
       <button type="submit">ADD</button>

@@ -12,7 +12,6 @@ export type ApplicationType = {
   notes?: string;
 };
 
-
 type ModalProps = {
   id: string;
 };
