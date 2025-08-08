@@ -16,12 +16,6 @@ type ApplicationType = {
   notes?: string;
 };
 
-type MyJWTPayload = {
-  // username?: string;
-  // id?: string;
-  userId?: string;
-};
-
 function Applications() {
   const [data, setData] = useState<ApplicationType[]>([]);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);

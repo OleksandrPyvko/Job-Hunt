@@ -22,7 +22,7 @@ function Overview() {
           totalApplications: data.length,
           offers: data.filter((app) => app.status === "Offer").length,
           rejections: data.filter((app) => app.status === "Rejected").length,
-          interviews: data.filter((app) => app.interview !== null).length,
+          interviews: data.filter((app) => app.status === 'Interview').length,
         });
       } catch (error) {
         console.error("Failed to fetch overview data:", error);
