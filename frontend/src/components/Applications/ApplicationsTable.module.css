@@ -1,0 +1,32 @@
+thead {
+  position: sticky;
+  top: 0;
+  background-color: var(--secondary-bg);
+  z-index: 10;
+}
+
+tr > th {
+  padding: 1.5rem 2rem;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: center;
+}
+
+table {
+  position: relative;
+  border-spacing: 0;
+  margin: 0 auto;
+  background-color: var(--bg-color);
+  /* box-shadow: 0 2px 4px rgba(8, 5, 5, 0.1); */
+}
+
+.notes {
+  min-width: 200px;
+}
+
+.add-button {
+  margin: 25px auto;
+}

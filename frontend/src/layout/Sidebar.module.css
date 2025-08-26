@@ -3,6 +3,7 @@ nav {
 }
 
 h2 {
+  font-family: "Author-bold", sans-serif;
   padding: 2rem;
   text-align: center;
 }
@@ -61,11 +62,12 @@ h2 {
   background-color: oklch(100% 0.00011 271.152);
   max-width: 250px;
   width: 100%;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 1rem 0;
+  margin: 0;
 }
 
 .nav-list li {

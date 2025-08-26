@@ -6,27 +6,37 @@ function Navigation() {
   const path = location.pathname;
   return (
     <nav>
-      
       <ul className={classes["nav-list"]}>
-        <li className={path === "/" ? classes["link-active"] : ""}>
-          <NavLink to="/" className={classes.full}>
-            Dashboard
+        <li>
+          <NavLink
+            to="/"
+            className={path === "/" ? classes["link-active"] : ""}
+          >
+            🏠 &nbsp; Dashboard
           </NavLink>
         </li>
-        <li className={path === "/applications" ? classes["link-active"] : ""}>
-          <NavLink to="applications" className={classes.full}>
-            {" "}
-            Applications{" "}
+        <li>
+          <NavLink
+            to="applications"
+            className={path === "/applications" ? classes["link-active"] : ""}
+          >
+            🈸 &nbsp; Applications
           </NavLink>
         </li>
-        <li className={path === "/interviews" ? classes["link-active"] : ""}>
-          <NavLink to="interviews" className={classes.full}>
-            Interviews{" "}
+        <li>
+          <NavLink
+            to="interviews"
+            className={path === "/interviews" ? classes["link-active"] : ""}
+          >
+            🎤 &nbsp; Interviews{" "}
           </NavLink>
         </li>
-        <li className={path === "/analytics" ? classes["link-active"] : ""}>
-          <NavLink to="analytics" className={classes.full}>
-            Analytics{" "}
+        <li>
+          <NavLink
+            to="analytics"
+            className={path === "/analytics" ? classes["link-active"] : ""}
+          >
+            📉 &nbsp; Analytics{" "}
           </NavLink>
         </li>
       </ul>

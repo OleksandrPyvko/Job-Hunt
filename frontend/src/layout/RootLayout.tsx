@@ -7,12 +7,12 @@ function RootLayout() {
     <div className={classes.layout}>
       <div className={classes.content}>
         <Sidebar />
-        <div className={classes.main}>
+        <main className={classes.main}>
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
-  );
+  )
 }
 
 export default RootLayout;

@@ -1,0 +1,38 @@
+.notes {
+  min-width: 200px;
+  max-width: 400px;
+}
+
+.row {
+  background-color: var(--secondary-bg);
+}
+
+.darker {
+  background-color: var(--bg-color);
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: -1;
+}
+
+.action-icon {
+  width: 20px;
+  height: 20px;
+  border: none;
+ 
+}
+
+.row td::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 1px;
+  /* background: #ccc; */
+}

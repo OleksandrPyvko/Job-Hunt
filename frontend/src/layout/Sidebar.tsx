@@ -27,7 +27,7 @@ function Sidebar() {
 
   return (
     <aside className={classes.sidebar}>
-      <h2>Job Hunt Companion</h2>
+      <h2>Job Hunt</h2>
       <Navigation />
       <Modal ref={login} onClose={() => login.current?.close()}>
         <Test ref={login} setIsLoggedIn={setIsLoggedIn} />
