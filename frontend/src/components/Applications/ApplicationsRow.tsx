@@ -1,5 +1,6 @@
-import { useState } from "react";
 import classes from "./ApplicationsRow.module.css";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteApplication, updateApplication } from "../../api/http";
 
 interface ApplicationProps {
   _id: string;
@@ -15,17 +16,44 @@ interface ApplicationProps {
 interface ApplicationRowProps {
   application: ApplicationProps;
   index: number;
-  onEdit: () => void;
-  onDelete: () => void;
+  id: string;
 }
 
-function ApplicationsRow({
-  application,
-  index,
-  onEdit,
-  onDelete,
-}: ApplicationRowProps) {
+function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
+  const queryClient = useQueryClient();
   const isOdd = index % 2 !== 0;
+
+  const { mutate: deleteMutation } = useMutation({
+    mutationFn: (id: string) => deleteApplication(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["userApplications"],
+      });
+    },
+  });
+
+  const { mutate: updateMutation } = useMutation({
+    mutationFn: ({
+      id,
+      updatedData,
+    }: {
+      id: string;
+      updatedData: ApplicationProps;
+    }) => updateApplication(id, updatedData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["userApplications"],
+      });
+    },
+  });
+
+  async function handleDeletion(id: string) {
+    deleteMutation(id);
+  }
+
+  async function handleUpdate(id: string, updatedData: ApplicationProps) {
+    updateMutation({ id, updatedData });
+  }
 
   return (
     <>
@@ -34,19 +62,27 @@ function ApplicationsRow({
         <td>{application.status}</td>
         <td>{application.position}</td>
         <td>{application.location}</td>
-        <td>
-          {new Date(application.applied).toLocaleDateString("en-GB")}
-        </td>
+        <td>{new Date(application.applied).toLocaleDateString("en-GB")}</td>
         <td>{application.interview}</td>
         <td className={classes.notes}>{application?.notes}</td>
 
         <td>
-          <button onClick={onEdit} className={classes["action-button"]}>
-            <img src="/edit.svg" className={classes["action-icon"]} alt="edit" />
-            
+          <button className={classes["action-button"]}>
+            <img
+              src="/edit.svg"
+              className={classes["action-icon"]}
+              alt="edit"
+            />
           </button>
-          <button onClick={onDelete} className={classes["action-button"]}>
-            <img src="/delete.svg" className={classes["action-icon"]} alt="delete" />
+          <button
+            onClick={() => handleDeletion(id)}
+            className={classes["action-button"]}
+          >
+            <img
+              src="/delete.svg"
+              className={classes["action-icon"]}
+              alt="delete"
+            />
           </button>
         </td>
       </tr>

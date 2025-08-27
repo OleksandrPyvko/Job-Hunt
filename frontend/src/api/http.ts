@@ -5,7 +5,7 @@ export type AddApplicationType = {
   position: string;
   location: string;
   applied: string;
-  interview?: string;
+  interview?: string | null;
   notes?: string;
 };
 
@@ -29,6 +29,22 @@ export default async function addApplication(application: AddApplicationType) {
     return await response.json();
   } catch (error) {
     console.error("Error adding application:", error);
+    throw error;
+  }
+}
+
+export  async function updateApplication(id: string, updatedData: AddApplicationType) {
+  try {
+    const response = await fetch(`http://localhost:3000/applications/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error("Error updating application:", error);
     throw error;
   }
 }

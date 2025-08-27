@@ -1,7 +1,8 @@
 import { useRef, type FormEvent } from "react";
 import classes from "./ApplicationForm.module.css";
-import addApplication from "../api/http";
+import addApplication from "../../api/http";
 import { jwtDecode } from "jwt-decode";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface Application {
   company: string;
@@ -22,15 +23,14 @@ type MyJWTPayload = {
   userId?: string;
 };
 
-
-
 function ApplicationForm({ ref }: FormProps) {
+  const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
   const today = new Date();
   const formattedDate = today.toISOString().split("T")[0];
 
-    const token = localStorage.getItem("token");
-    const tokenData = token ? jwtDecode<MyJWTPayload>(token) : {};
+  const token = localStorage.getItem("token");
+  const tokenData = token ? jwtDecode<MyJWTPayload>(token) : {};
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -53,6 +53,7 @@ function ApplicationForm({ ref }: FormProps) {
     } catch (e) {
       console.error(e);
     }
+    queryClient.invalidateQueries({ queryKey: ["userApplications"] });
   }
 
   return (
@@ -64,7 +65,7 @@ function ApplicationForm({ ref }: FormProps) {
       <label>Company</label>
       <input name="company" type="text" />
       <label>Status</label>
-      <select name="status" id="" >
+      <select name="status" id="">
         <option value="applied">Applied</option>
         <option value="interview">Interview</option>
         <option value="offer">Offer</option>
