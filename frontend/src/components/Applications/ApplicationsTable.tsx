@@ -4,7 +4,7 @@ import { getUserApplications } from "../../api/http";
 import { useAuth } from "../../context";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
-import { SortData } from "../Filter/Helper";
+import { SortData } from "../Filter/SortHelper";
 
 function ApplicationsTable() {
   const { tokenData } = useAuth();
@@ -21,6 +21,7 @@ function ApplicationsTable() {
   if (data?.length === 0) return <p>No data has been found</p>;
 
   const sortedData = SortData(data || [], sort, status);
+
 
   return (
     <>

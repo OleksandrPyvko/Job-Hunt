@@ -53,12 +53,13 @@ export async function getApplicationById(id: string) {
   try {
     const res = await fetch(`http://localhost:3000/applications/${id}`);
     if (!res.ok) {
-      throw new Error("Failed to fetch application data");
+      throw new Error("Failed to fetch application data!!!");
     }
     const data = await res.json();
     return data;
   } catch (e) {
     console.error(e);
+    throw e;
   }
 }
 

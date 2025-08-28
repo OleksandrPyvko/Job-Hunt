@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Applications from "./pages/Applications";
 import Interviews from "./pages/Interviews";
 import Analytics from "./pages/Analytics";
-import Application from "./pages/Application";
+
 import ProtectedRoute from "./pages/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import { AuthContextProvider } from "./context";
@@ -31,14 +31,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      {
-        path: "applications/:id",
-        element: (
-          <ProtectedRoute>
-            <Application />
-          </ProtectedRoute>
-        ),
-      },
+     
       {
         path: "interviews",
         element: (

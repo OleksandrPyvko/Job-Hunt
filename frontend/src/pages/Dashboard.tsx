@@ -36,7 +36,6 @@ function Dashboard() {
     queryFn: () => getUserApplications(tokenData?.userId || ""),
   });
 
-  console.log(data);
 
   return (
     <>

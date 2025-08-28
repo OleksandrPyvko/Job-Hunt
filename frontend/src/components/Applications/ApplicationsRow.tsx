@@ -1,20 +1,24 @@
 import classes from "./ApplicationsRow.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteApplication, updateApplication } from "../../api/http";
+import type { ApplicationType } from "../../types/types";
+import { useRef } from "react";
+import Modal from "../Modal";
+import UpdateApplicationForm from "./UpdateApplicationForm";
 
-interface ApplicationProps {
-  _id: string;
-  company: string;
-  status: string;
-  position: string;
-  location: string;
-  applied: string;
-  interview?: string | null;
-  notes?: string;
-}
+// interface ApplicationProps {
+//   _id: string;
+//   company: string;
+//   status: string;
+//   position: string;
+//   location: string;
+//   applied: string;
+//   interview?: string | null;
+//   notes?: string;
+// }
 
 interface ApplicationRowProps {
-  application: ApplicationProps;
+  application: ApplicationType;
   index: number;
   id: string;
 }
@@ -22,24 +26,10 @@ interface ApplicationRowProps {
 function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
   const queryClient = useQueryClient();
   const isOdd = index % 2 !== 0;
+  const dialog = useRef<HTMLDialogElement | null>(null);
 
   const { mutate: deleteMutation } = useMutation({
     mutationFn: (id: string) => deleteApplication(id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["userApplications"],
-      });
-    },
-  });
-
-  const { mutate: updateMutation } = useMutation({
-    mutationFn: ({
-      id,
-      updatedData,
-    }: {
-      id: string;
-      updatedData: ApplicationProps;
-    }) => updateApplication(id, updatedData),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["userApplications"],
@@ -51,9 +41,10 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
     deleteMutation(id);
   }
 
-  async function handleUpdate(id: string, updatedData: ApplicationProps) {
-    updateMutation({ id, updatedData });
+  async function handleUpdate() {
+    dialog.current?.showModal();
   }
+
 
   return (
     <>
@@ -64,10 +55,11 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
         <td>{application.location}</td>
         <td>{new Date(application.applied).toLocaleDateString("en-GB")}</td>
         <td>{application.interview}</td>
+        
         <td className={classes.notes}>{application?.notes}</td>
 
         <td>
-          <button className={classes["action-button"]}>
+          <button className={classes["action-button"]} onClick={handleUpdate}>
             <img
               src="/edit.svg"
               className={classes["action-icon"]}
@@ -75,7 +67,7 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
             />
           </button>
           <button
-            onClick={() => handleDeletion(id)}
+            onClick={() => handleDeletion(id!)}
             className={classes["action-button"]}
           >
             <img
@@ -86,6 +78,9 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
           </button>
         </td>
       </tr>
+      <Modal ref={dialog}>
+        <UpdateApplicationForm applicationId={id } />
+      </Modal>
     </>
   );
 }

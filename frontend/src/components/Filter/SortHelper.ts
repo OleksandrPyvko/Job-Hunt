@@ -1,10 +1,12 @@
 import type { ApplicationType } from "../../types/types";
 
+//* Helper to sort and filter data based on user selection *//
+
 export function SortData(
   data: ApplicationType[],
   sort: string = "all",
   status: string = "all"
-) {
+): ApplicationType[] {
   if (data.length === 0) return [];
 
   const filteredData =
