@@ -1,4 +1,3 @@
-
 export type AddApplicationType = {
   company: string;
   status: string;
@@ -33,14 +32,17 @@ export default async function addApplication(application: AddApplicationType) {
   }
 }
 
-export  async function updateApplication(id: string, updatedData: AddApplicationType) {
+export async function updateApplication(
+  id: string,
+  updatedData: AddApplicationType
+) {
   try {
     const response = await fetch(`http://localhost:3000/applications/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedData),
+      body: JSON.stringify({ ...updatedData }),
     });
     return await response.json();
   } catch (error) {
@@ -63,21 +65,17 @@ export async function getApplicationById(id: string) {
   }
 }
 
-export async function getUserApplications (userId: string) {
-  
-        const res = await fetch(
-          `http://localhost:3000/applications/user/${userId}`
-        );
-        if (!res.ok) {
-          throw new Error("Failed to fetch applications");
-        }
-        const data = await res.json();
-        if (!Array.isArray(data)) {
-          throw new Error("Invalid data format from server");
-        }
+export async function getUserApplications(userId: string) {
+  const res = await fetch(`http://localhost:3000/applications/user/${userId}`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch applications");
+  }
+  const data = await res.json();
+  if (!Array.isArray(data)) {
+    throw new Error("Invalid data format from server");
+  }
 
-        return data;
-
+  return data;
 }
 
 export async function deleteApplication(id: string) {
@@ -107,7 +105,13 @@ export async function registerUser(newUser: UserType) {
   }
 }
 
-export async function loginUser({ email, password }: { email: string; password: string }) {
+export async function loginUser({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) {
   try {
     const response = await fetch("http://localhost:3000/auth/login", {
       method: "POST",

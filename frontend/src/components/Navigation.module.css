@@ -55,14 +55,16 @@ nav {
 
 .link-active {
   color: oklch(100% 0.00011 271.152);
-  background-color: var(--accent-color);
-  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+  /* background-color: var(--accent-color); */
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  background: linear-gradient(90deg, #ff6d48, #ffa865);
+  /* background: linear-gradient(90deg, #72ff5f, #a7ff6d); */
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border-radius: 0.5em;
+  /* color: #fff; */
+  /* width: 80%; */
 }
 
-.link-active {
-  color: #fff;
-  width: 80%;
-}
+

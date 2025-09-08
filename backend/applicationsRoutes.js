@@ -84,7 +84,7 @@ applicationsRoutes.route("/applications/:id").put(async (request, response) => {
   };
   let data = await db
     .collection("applications")
-    .updateOne({ _id: new ObjectId(request.params.id) }, { mongoObject });
+    .updateOne({ _id: new ObjectId(request.params.id) }, mongoObject);
   response.json(data);
 });
 

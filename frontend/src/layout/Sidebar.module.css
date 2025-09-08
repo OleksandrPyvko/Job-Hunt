@@ -9,25 +9,25 @@ h2 {
 }
 
 .authButton {
-  /* border: 1px solid hsl(0, 0%, 13%);
-  background-color: #fff;
-  padding: 0.5rem 1.5rem;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: "Author-bold", sans-serif;
-  box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.3);
-  margin: 2rem; */
-
   width: 150px;
   margin: 0 auto;
   height: 50px;
-  background-color: #28a745;
+  background: linear-gradient(90deg, #ff5f37, #ff9543);
+  /* background: linear-gradient(90deg, #44ff3e, #7bfedd); */
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 1s, color 1s;
+}
+
+.authButton:hover {
+  background: linear-gradient(180deg, #ff6e49, #fc9d55);
+  color: #fff;
+  transition: background 1s, color 1s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .logoutButton {

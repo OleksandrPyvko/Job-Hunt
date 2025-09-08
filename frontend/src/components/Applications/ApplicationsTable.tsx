@@ -22,9 +22,8 @@ function ApplicationsTable() {
 
   const sortedData = SortData(data || [], sort, status);
 
-
   return (
-    <>
+    <div className={classes.tableContainer}>
       <table>
         <thead>
           <tr className={classes.tr}>
@@ -49,7 +48,7 @@ function ApplicationsTable() {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

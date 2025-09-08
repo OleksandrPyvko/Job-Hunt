@@ -5,6 +5,15 @@ thead {
   z-index: 10;
 }
 
+.tr {
+  max-width: 800px;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+}
+
 tr > th {
   padding: 1.5rem 2rem;
 }
@@ -18,8 +27,8 @@ td {
 table {
   position: relative;
   border-spacing: 0;
-  margin: 0 auto;
-  background-color: var(--bg-color);
+  /* margin: 0 auto; */
+
   /* box-shadow: 0 2px 4px rgba(8, 5, 5, 0.1); */
 }
 

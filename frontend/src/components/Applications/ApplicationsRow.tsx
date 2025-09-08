@@ -38,13 +38,16 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
   });
 
   async function handleDeletion(id: string) {
+    const confirmed = confirm(
+      "Are you sure you want to delete this application?"
+    );
+    if (!confirmed) return;
     deleteMutation(id);
   }
 
   async function handleUpdate() {
     dialog.current?.showModal();
   }
-
 
   return (
     <>
@@ -53,9 +56,9 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
         <td>{application.status}</td>
         <td>{application.position}</td>
         <td>{application.location}</td>
-        <td>{new Date(application.applied).toLocaleDateString("en-GB")}</td>
-        <td>{application.interview}</td>
-        
+        <td className={classes.date}>{new Date(application.applied).toLocaleDateString("en-GB")}</td>
+        <td className={classes.date}>{application.interview}</td>
+
         <td className={classes.notes}>{application?.notes}</td>
 
         <td>
@@ -79,7 +82,7 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
         </td>
       </tr>
       <Modal ref={dialog}>
-        <UpdateApplicationForm applicationId={id } />
+        <UpdateApplicationForm ref={dialog} applicationId={id} />
       </Modal>
     </>
   );

@@ -1,19 +1,19 @@
- * {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
-} 
+}
 
 :root {
-
-
   --bg-color: oklch(95.514% 0.00011 271.152);
+  --bg-color: linear-gradient(
+    135deg,
+    oklch(95.514% 0.00011 271.152),
+    oklch(93.514% 0.00011 271.152)
+  );
   --text-color: #1a1a1a;
   --accent-color: #00af35;
   --secondary-bg: oklch(100% 0.00011 271.152);
-
- 
 }
 
 [data-theme="dark"] {
@@ -46,19 +46,18 @@
 
 * {
   font-family: "Author", sans-serif;
+  font-variant-numeric: lining-nums;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-
-
 body {
   font-size: 18px;
   min-height: 100vh;
   font-weight: 70;
-  background-color: var(--bg-color);
-   max-height: 100vh;
+  background: var(--bg-color);
+  max-height: 100vh;
   height: 100%;
 }
 

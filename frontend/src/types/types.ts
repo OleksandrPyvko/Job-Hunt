@@ -5,6 +5,6 @@ export type ApplicationType = {
   position: string;
   location: string;
   applied: string;
-  interview?: string;
+  interview?: string | null;
   notes?: string;
 };

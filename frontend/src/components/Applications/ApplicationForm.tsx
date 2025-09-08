@@ -31,6 +31,8 @@ function ApplicationForm({ ref }: FormProps) {
       userId: tokenData!.userId as string,
     };
 
+    console.log("New Application:", application);
+
     try {
       await addApplication(application);
       formRef.current?.reset();
