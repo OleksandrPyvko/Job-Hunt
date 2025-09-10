@@ -1,6 +1,15 @@
+td {
+  
+  max-width: 200px;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+  padding: 0;
+}
+
 .notes {
   min-width: 200px;
-  max-width: 400px;
+  max-width: 350px;
   white-space: normal;
   word-wrap: break-word;
   word-break: break-word;
@@ -32,7 +41,7 @@
   border: none;
 }
 
-.row td::after {
+/* .row td::after {
   content: "";
   display: block;
   position: absolute;
@@ -40,5 +49,18 @@
   right: 10%;
   bottom: 0;
   height: 1px;
-  /* background: #ccc; */
+} */
+
+.interview {
+  color: rgb(0, 167, 233);
+  background-color: rgb(196, 238, 255);
+}
+
+.offer {
+  color: rgb(32, 175, 47);
+  background-color: rgb(211, 255, 215);
+}
+.rejected {
+  color: rgb(255, 0, 0);
+  background-color: rgb(255, 204, 204);
 }

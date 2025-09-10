@@ -21,7 +21,6 @@ img {
 }
 
 form {
-  /* transition: opacity 1s ease-in-out; */
   z-index: 555;
   background-color: transparent;
   user-select: none;
@@ -34,7 +33,6 @@ form {
 
 label {
   font-size: 16px;
-  /* margin-bottom: 10px; */
   margin-top: 10px;
   font-weight: 500;
   color: #686868;
@@ -71,7 +69,6 @@ p {
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 1.5rem 0;
 }

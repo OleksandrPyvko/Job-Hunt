@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 import classes from "./Dashboard.module.css";
-import {  useRef} from "react";
+import { useRef } from "react";
 import Modal from "../components/Modal";
 import ApplicationForm from "../components/Applications/ApplicationForm";
 import { useAuth } from "../context";
@@ -31,11 +31,10 @@ function Dashboard() {
     dialog.current?.close();
   }
 
-  const { isLoading, data, error } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["userApplications"],
     queryFn: () => getUserApplications(tokenData?.userId || ""),
   });
-
 
   return (
     <>
@@ -44,7 +43,7 @@ function Dashboard() {
       </div>
 
       <div className={classes.dashboard}>
-        <Overview />
+        <Overview data={data ?? []} />
 
         <div className={classes.overview}>
           <div className={classes["overview-item"]}>

@@ -13,7 +13,7 @@ function ApplicationForm({ ref }: FormProps) {
   const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
   const { tokenData } = useAuth();
-  
+
   const today = new Date();
   const formattedDate = today.toISOString().split("T")[0];
 

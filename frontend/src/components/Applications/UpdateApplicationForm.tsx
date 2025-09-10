@@ -1,4 +1,4 @@
-import { useRef, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import type { ApplicationType } from "../../types/types";
 import { useAuth } from "../../context";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -12,9 +12,9 @@ type Props = {
 function UpdateApplicationForm({ ref, applicationId }: Props) {
   const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
-  const { tokenData } = useAuth();
-  const today = new Date();
-  const formattedDate = today.toISOString().split("T")[0];
+  const [isInterview, setIsInterview] = useState(false);
+
+  const formattedDate = new Date().toISOString().split("T")[0];
 
   const { data, isPending, error } = useQuery({
     queryKey: ["application", applicationId],
@@ -75,19 +75,28 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
       <label>Company</label>
       <input name="company" type="text" defaultValue={data.company} />
       <label>Status</label>
-      <select name="status" id="" defaultValue={data.status}>
+      <select
+        name="status"
+        id=""
+        defaultValue={data.status}
+        onChange={(e) => setIsInterview(e.target.value === "interview")}
+      >
         <option value="applied">Applied</option>
         <option value="interview">Interview</option>
         <option value="offer">Offer</option>
         <option value="rejected">Rejected</option>
       </select>
-      <label>Interview on</label>
 
-      <input
-        name="interview"
-        defaultValue={data.interview}
-        type="datetime-local"
-      />
+      {isInterview && (
+        <>
+          <label>Interview on</label>
+          <input
+            name="interview"
+            defaultValue={data.interview}
+            type="datetime-local"
+          />
+        </>
+      )}
 
       <label>Position</label>
       <input name="position" type="text" defaultValue={data.position} />
