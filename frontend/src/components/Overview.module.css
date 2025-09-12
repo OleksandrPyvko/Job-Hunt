@@ -1,15 +1,10 @@
 
 .grid {
   display: grid;
-  /* max-width: 600px; */
-  /* margin: 2rem auto; */
   padding: 1rem;
   background-color: #ffffffc2;
   border-radius: 4px;
   grid-template-rows: 1fr 1fr 1fr;
-  /* border: 1px solid #f0f0f0; */
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  
 }
 
 .stat {
@@ -26,13 +21,6 @@
   min-width: 170px;
   text-align: start;
   
-}
-
-p {
-  /* font-family: "Author-semibold", sans-serif; */
-  font-size: 18px;
-  text-align: start;
-  margin-left: 6px;
 }
 
 .offers {

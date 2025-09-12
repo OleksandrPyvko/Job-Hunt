@@ -54,15 +54,15 @@
 
 body {
   font-size: 18px;
-  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100dvh;
   font-weight: 70;
   background: var(--bg-color);
-  max-height: 100vh;
   height: 100%;
 }
 
 #root {
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .bold {
