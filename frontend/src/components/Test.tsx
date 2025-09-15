@@ -159,7 +159,7 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
             }}
           />
         </form>
-          <p className={classes.error}>{error}</p>
+        <p className={classes.error}>{error}</p>
         <div>
           <Button
             form="login"

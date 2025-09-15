@@ -9,6 +9,7 @@ import { getUserApplications } from "../api/http";
 import Overview from "../components/Overview";
 import { useQuery } from "@tanstack/react-query";
 import UpcomingInterviews from "../components/Dashboard/UpcomingInterviews";
+import RecentApplications from "../components/Dashboard/RecentApplications";
 
 function Dashboard() {
   const { tokenData } = useAuth();
@@ -33,8 +34,9 @@ function Dashboard() {
 
       <div className={classes.overview}>
         <UpcomingInterviews data={data} />
+        <RecentApplications />
 
-        <div className={classes["overview-item"]}>
+        {/* <div className={classes["overview-item"]}>
           <h3>Recent Applications</h3>
           <p className={classes["overview-row"]}>
             <Link to="">Spotify | UI Eng | 🟡</Link>
@@ -44,7 +46,7 @@ function Dashboard() {
               Google | FE Dev | 🔵
             </Link>
           </p>
-        </div>
+        </div> */}
       </div>
       <div className={classes.actions}>
         <Modal ref={dialog} onClose={handleCloseDialog}>

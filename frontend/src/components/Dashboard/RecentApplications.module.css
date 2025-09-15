@@ -1,0 +1,13 @@
+.application {
+  display: flex;
+  justify-content: space-between;
+}
+
+.application p {
+  min-width: 100px;
+  /* text-align: center; */
+}
+
+.applications-list {
+  max-width: 50%;
+}

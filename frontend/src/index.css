@@ -5,7 +5,6 @@
 }
 
 :root {
-  --bg-color: oklch(95.514% 0.00011 271.152);
   --bg-color: linear-gradient(
     135deg,
     oklch(95.514% 0.00011 271.152),

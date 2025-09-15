@@ -7,9 +7,16 @@ function UpcomingInterviews({ data }: { data?: ApplicationType[] }) {
     ?.filter((application) => application.status === "interview")
     .slice(0, 5);
 
+  if (upcomingInterviews?.length === 0)
+    return (
+      <div className={classes.container}>
+        <h3>Upcoming interviews</h3>
+        <p>There are no interviews are planned yet</p>
+      </div>
+    );
   return (
     <div className={classes.container}>
-        <h3>Upcoming interviews</h3>
+      <h3>Upcoming interviews</h3>
       {upcomingInterviews?.map((interview) => (
         <UpcomingInterview key={interview._id} interview={interview} />
       ))}

@@ -22,18 +22,6 @@ applicationsRoutes.route("/applications").get(async (request, response) => {
 });
 
 //2 read one
-// applicationsRoutes.route("/applications/:id").get(async (request, response) => {
-//   let db = database.getDb();
-//   let data = await db
-//     .collection("applications")
-//     .findOne({ _id: new ObjectId(request.params.id) });
-//   if (Object.keys(data).length > 0) {
-//     response.json(data);
-//   } else {
-//     throw new Error("Data was not found");
-//   }
-// });
-
 applicationsRoutes.route("/applications/:id").get(async (request, response) => {
   try {
     const db = database.getDb();

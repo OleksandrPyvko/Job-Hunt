@@ -6,9 +6,7 @@ function UpcomingInterview({ interview }: { interview?: ApplicationType }) {
     <div className={classes.container}>
       <p>{interview?.company}</p>
       <p>{interview?.position}</p>
-      <p>
-        {interview?.interview ? interview?.interview : "No time set yet"}
-      </p>
+      <p>{interview?.interview ? interview?.interview : "No time set yet"}</p>
     </div>
   );
 }
