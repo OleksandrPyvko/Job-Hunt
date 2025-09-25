@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Button from "../UI/Button";
 import classes from "./Dashboard.module.css";
 import { useRef } from "react";
@@ -33,20 +32,9 @@ function Dashboard() {
       <h2>Welcome, {tokenData?.username}</h2>
 
       <div className={classes.overview}>
-        <UpcomingInterviews data={data} />
+      {/* <Overview data={data ?? []} /> */}
         <RecentApplications />
-
-        {/* <div className={classes["overview-item"]}>
-          <h3>Recent Applications</h3>
-          <p className={classes["overview-row"]}>
-            <Link to="">Spotify | UI Eng | 🟡</Link>
-          </p>
-          <p className={classes["overview-row"]}>
-            <Link to="" className={classes["overview-row"]}>
-              Google | FE Dev | 🔵
-            </Link>
-          </p>
-        </div> */}
+        <UpcomingInterviews data={data} />
       </div>
       <div className={classes.actions}>
         <Modal ref={dialog} onClose={handleCloseDialog}>
@@ -54,7 +42,6 @@ function Dashboard() {
         </Modal>
         <Button onClick={handleAddApplication}>+ Add new application</Button>
       </div>
-      <Overview data={data ?? []} />
     </div>
   );
 }

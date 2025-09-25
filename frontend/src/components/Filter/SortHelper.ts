@@ -15,7 +15,6 @@ export function SortData(
       : data.filter(
           (application: ApplicationType) => application.status === status
         );
-
   switch (sort) {
     case "date-desc":
       return filteredData

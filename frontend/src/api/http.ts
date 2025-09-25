@@ -75,6 +75,9 @@ export async function getUserApplications(userId: string) {
     throw new Error("Invalid data format from server");
   }
 
+  if (data.length === 0) {
+    return [];
+  }
   return data;
 }
 

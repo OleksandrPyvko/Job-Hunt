@@ -56,7 +56,7 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
 
   return (
     <>
-      <tr className={`${classes.row} ${!isOdd ? classes.darker : ""}`}>
+      <tr className={`${classes.row} ${!isOdd ? classes.darker : ""} ${status}`}>
         <td>{application.company}</td>
         <td className={status}>{application.status}</td>
         <td>{application.position}</td>

@@ -38,7 +38,7 @@ function ApplicationsTable() {
           </tr>
         </thead>
         <tbody>
-          {sortedData?.map((application, index) => (
+          {[...sortedData].reverse().map((application, index) => (
             <ApplicationsRow
               index={index}
               key={application._id}

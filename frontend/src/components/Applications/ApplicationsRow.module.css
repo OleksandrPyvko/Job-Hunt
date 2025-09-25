@@ -1,6 +1,6 @@
 td {
-  
   max-width: 200px;
+
   white-space: normal;
   word-wrap: break-word;
   word-break: break-word;
@@ -9,7 +9,7 @@ td {
 
 .notes {
   min-width: 200px;
-  max-width: 350px;
+  max-width: 300px;
   white-space: normal;
   word-wrap: break-word;
   word-break: break-word;
@@ -52,12 +52,12 @@ td {
 } */
 
 .interview {
-  color: rgb(0, 167, 233);
+  color: rgb(1, 126, 175);
   background-color: rgb(196, 238, 255);
 }
 
 .offer {
-  color: rgb(32, 175, 47);
+  color: rgb(26, 145, 38);
   background-color: rgb(211, 255, 215);
 }
 .rejected {

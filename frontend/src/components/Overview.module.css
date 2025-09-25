@@ -1,4 +1,3 @@
-
 .grid {
   display: grid;
   padding: 1rem;
@@ -10,7 +9,6 @@
 .stat {
   text-align: center;
   width: 100%;
-  /* padding: 0.5rem; */
   display: flex;
   align-items: center;
 }
@@ -20,10 +18,9 @@
   margin: 0;
   min-width: 170px;
   text-align: start;
-  
 }
 
-.offers {
+/* .offers {
   color: lch(65.59% 75.79 145.19);
 }
 
@@ -33,4 +30,4 @@
 
 .interviews {
   color: lch(55.94% 42.98 259.11);
-}
+} */

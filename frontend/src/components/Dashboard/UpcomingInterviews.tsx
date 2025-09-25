@@ -17,6 +17,12 @@ function UpcomingInterviews({ data }: { data?: ApplicationType[] }) {
   return (
     <div className={classes.container}>
       <h3>Upcoming interviews</h3>
+
+      <div className={classes.header}>
+        <p>Company</p>
+        <p>Position</p>
+        <p>Interview at</p>
+      </div>
       {upcomingInterviews?.map((interview) => (
         <UpcomingInterview key={interview._id} interview={interview} />
       ))}

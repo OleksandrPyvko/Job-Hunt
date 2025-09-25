@@ -52,14 +52,14 @@ const router = createBrowserRouter([
         path: "login",
         element: <LoginPage />,
       },
-      {
-        index: true,
-        element: (
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        ),
-      },
+      // {
+      //   index: true,
+      //   element: (
+      //     <ProtectedRoute>
+      //       <Dashboard />
+      //     </ProtectedRoute>
+      //   ),
+      // },
     ],
   },
 ]);

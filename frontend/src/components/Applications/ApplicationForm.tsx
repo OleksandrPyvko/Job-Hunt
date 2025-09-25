@@ -50,7 +50,7 @@ function ApplicationForm({ ref }: FormProps) {
       className={classes["application-form"]}
     >
       <label>Company</label>
-      <input name="company" type="text" />
+      <input required name="company" type="text" />
       <label>Status</label>
       <select name="status" id="">
         <option value="applied">Applied</option>
