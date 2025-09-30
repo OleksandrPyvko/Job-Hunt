@@ -1,4 +1,4 @@
-import { useRef, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import classes from "./ApplicationForm.module.css";
 import addApplication from "../../api/http";
 import { useQueryClient } from "@tanstack/react-query";
@@ -10,6 +10,7 @@ interface FormProps {
 }
 
 function ApplicationForm({ ref }: FormProps) {
+  const [isInterview, setIsInterview] = useState(false);
   const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
   const { tokenData } = useAuth();
@@ -31,14 +32,14 @@ function ApplicationForm({ ref }: FormProps) {
       userId: tokenData!.userId as string,
     };
 
-    console.log("New Application:", application);
-
     try {
       await addApplication(application);
       formRef.current?.reset();
       ref.current?.close();
     } catch (e) {
       console.error(e);
+    } finally {
+      setIsInterview(false);
     }
     queryClient.invalidateQueries({ queryKey: ["userApplications"] });
   }
@@ -52,12 +53,23 @@ function ApplicationForm({ ref }: FormProps) {
       <label>Company</label>
       <input required name="company" type="text" />
       <label>Status</label>
-      <select name="status" id="">
+      <select
+        name="status"
+        id=""
+        onChange={(e) => setIsInterview(e.target.value === "interview")}
+      >
         <option value="applied">Applied</option>
         <option value="interview">Interview</option>
         <option value="offer">Offer</option>
         <option value="rejected">Rejected</option>
       </select>
+
+      {isInterview && (
+        <>
+          <label>Interview on</label>
+          <input name="interview" type="datetime-local" />
+        </>
+      )}
       <label>Position</label>
       <input name="position" type="text" />
       <label>Location</label>

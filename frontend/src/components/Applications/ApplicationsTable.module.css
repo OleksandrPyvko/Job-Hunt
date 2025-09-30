@@ -36,3 +36,11 @@ td {
 .add-button {
   margin: 25px auto;
 }
+
+.empty-list {
+  padding: 2rem;
+  text-align: center;
+  color: grey;
+  font-size: 2rem;
+  font-weight: bold;
+}

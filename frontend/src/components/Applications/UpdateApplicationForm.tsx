@@ -87,16 +87,17 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
         <option value="rejected">Rejected</option>
       </select>
 
-      {isInterview && (
-        <>
-          <label>Interview on</label>
-          <input
-            name="interview"
-            defaultValue={data.interview}
-            type="datetime-local"
-          />
-        </>
-      )}
+      {isInterview ||
+        (data.status === "interview" && (
+          <>
+            <label>Interview on</label>
+            <input
+              name="interview"
+              defaultValue={data.interview}
+              type="datetime-local"
+            />
+          </>
+        ))}
 
       <label>Position</label>
       <input name="position" type="text" defaultValue={data.position} />

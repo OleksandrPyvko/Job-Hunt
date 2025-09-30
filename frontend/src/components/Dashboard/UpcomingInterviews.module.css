@@ -7,13 +7,18 @@
   padding: 1.5rem;
 }
 
-.header {
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.header-row {
   display: flex;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
   padding: 0.5rem;
 }
 
-.header p {
+.header-row p {
   max-width: 400px;
   min-width: 100px;
   font-size: 1rem;
@@ -21,4 +26,11 @@
   color: rgb(78, 78, 78);
 
   width: 100%;
+}
+
+.empty-list {
+  padding: 2rem;
+  font-size: 16px;
+  text-align: center;
+  color: gray;
 }

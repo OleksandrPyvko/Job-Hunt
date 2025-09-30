@@ -2,12 +2,11 @@
   display: flex;
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
   padding: 0.5rem;
-  
 }
 
 .container p {
   max-width: 400px;
-  min-width: 100px;
+  min-width: 115px;
   font-size: 1rem;
 
   width: 100%;

@@ -18,7 +18,12 @@ function ApplicationsTable() {
   });
 
   if (isPending) return <p>Loading...</p>;
-  if (data?.length === 0) return <p>No data has been found</p>;
+  if (data?.length === 0)
+    return (
+      <div className={classes["empty-list"]}>
+        No applications here for now. <br/> Start by adding one!
+      </div>
+    );
 
   const sortedData = SortData(data || [], sort, status);
 

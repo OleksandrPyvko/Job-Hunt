@@ -29,7 +29,7 @@ function Dashboard() {
 
   return (
     <div className={classes.dashboard}>
-      <h2>Welcome, {tokenData?.username}</h2>
+      <h2 className={classes.header}>Welcome, {tokenData?.username}</h2>
 
       <div className={classes.overview}>
       {/* <Overview data={data ?? []} /> */}

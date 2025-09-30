@@ -1,12 +1,11 @@
 .container {
-  display: grid;
-  grid-template-columns: 1fr 10fr;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   scrollbar-width: thin;
   scroll-behavior: smooth;
   max-height: 100%;
   border: transparent;
-  margin-top: 2rem;
 }
 
 .filter {

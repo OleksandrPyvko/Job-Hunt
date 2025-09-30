@@ -12,7 +12,7 @@ function RootLayout() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
 export default RootLayout;

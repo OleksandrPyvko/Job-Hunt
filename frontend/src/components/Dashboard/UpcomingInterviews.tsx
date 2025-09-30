@@ -10,15 +10,15 @@ function UpcomingInterviews({ data }: { data?: ApplicationType[] }) {
   if (upcomingInterviews?.length === 0)
     return (
       <div className={classes.container}>
-        <h3>Upcoming interviews</h3>
-        <p>There are no interviews are planned yet</p>
+        <h3 className={classes.title}>Upcoming interviews</h3>
+        <p className={classes['empty-list']}>No interviews are planned yet</p>
       </div>
     );
   return (
     <div className={classes.container}>
-      <h3>Upcoming interviews</h3>
+      <h3 className={classes.title}>Upcoming interviews</h3>
 
-      <div className={classes.header}>
+      <div className={classes['header-row']}>
         <p>Company</p>
         <p>Position</p>
         <p>Interview at</p>
