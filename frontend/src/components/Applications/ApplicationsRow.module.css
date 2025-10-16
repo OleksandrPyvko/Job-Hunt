@@ -36,8 +36,8 @@ td {
 }
 
 .action-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border: none;
 }
 
@@ -52,15 +52,73 @@ td {
 } */
 
 .interview {
-  color: rgb(1, 126, 175);
-  background-color: rgb(196, 238, 255);
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 107, 194);
+  border: none !important;
 }
 
 .offer {
-  color: rgb(26, 145, 38);
-  background-color: rgb(211, 255, 215);
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 161, 48);
+  border: none !important;
 }
 .rejected {
-  color: rgb(212, 0, 0);
-  background-color: rgb(255, 204, 204);
+  color: rgb(255, 255, 255);
+  background-color: rgb(223, 0, 0);
+  border: none !important;
+}
+
+.new {
+  /* display: flex;
+  justify-content: space-between; */
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  width: 800px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.company {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.position {
+  color: grey;
+  font-size: 18px;
+}
+
+.location {
+  color: grey;
+  font-size: 18px;
+}
+
+.status {
+  padding: 2px 4px;
+  max-width: 100px;
+  width: 100%;
+  text-align: center;
+  border-radius: 2rem;
+  border: 1px solid black;
+}
+
+.applied {
+  color: grey;
+  margin: 3px 0;
+}
+
+.flex-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.notes * {
+  color: grey;
+  font-size: 0.9rem;
+  margin: 0 auto;
 }

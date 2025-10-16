@@ -44,8 +44,8 @@ export default function Filter() {
             <option value="all">All</option>
             <option value="date-desc">Date applied 🔻</option>
             <option value="date-asc">Date applied 🔺</option>
-            <option value="company-asc">Company A-Z</option>
-            <option value="company-desc">Company Z-A</option>
+            <option value="company-desc">Company A-Z</option>
+            <option value="company-asc">Company Z-A</option>
           </select>
         </div>
 

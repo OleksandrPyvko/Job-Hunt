@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import classes from "./RootLayout.module.css";
+import { GradientBackground } from "../UI/GradientBackground";
 
 function RootLayout() {
   return (

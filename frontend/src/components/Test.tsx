@@ -20,8 +20,8 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@test.com");
+  const [password, setPassword] = useState("Test1234");
 
   const navigate = useNavigate();
 
@@ -147,10 +147,12 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
               setEmail(e.target.value);
               setError("");
             }}
+            
           />
           <label htmlFor="">Password</label>
           <input
             value={password}
+            
             type="password"
             disabled={!isLogin}
             onChange={(e) => {

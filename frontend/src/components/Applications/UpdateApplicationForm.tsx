@@ -12,7 +12,7 @@ type Props = {
 function UpdateApplicationForm({ ref, applicationId }: Props) {
   const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
-  const [isInterview, setIsInterview] = useState(false);
+  const [isInterview, setIsInterview] = useState<boolean>(false);
 
   const formattedDate = new Date().toISOString().split("T")[0];
 
@@ -64,8 +64,6 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
       notes: fd.get("notes") as string,
     };
 
-    console.log("Updated Application:", updatedApplication);
-
     mutate({ id: applicationId, updatedApplication });
     ref.current?.close();
   }
@@ -87,17 +85,16 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
         <option value="rejected">Rejected</option>
       </select>
 
-      {isInterview ||
-        (data.status === "interview" && (
-          <>
-            <label>Interview on</label>
-            <input
-              name="interview"
-              defaultValue={data.interview}
-              type="datetime-local"
-            />
-          </>
-        ))}
+      {(isInterview || data.status === "interview") && (
+        <>
+          <label>Interview on</label>
+          <input
+            name="interview"
+            defaultValue={data.interview}
+            type="datetime-local"
+          />
+        </>
+      )}
 
       <label>Position</label>
       <input name="position" type="text" defaultValue={data.position} />

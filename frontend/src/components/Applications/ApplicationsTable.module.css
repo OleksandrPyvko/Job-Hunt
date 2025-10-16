@@ -44,3 +44,36 @@ td {
   font-size: 2rem;
   font-weight: bold;
 }
+
+.new {
+  display: flex;
+  justify-content: space-between;
+  width: 800px;
+  background-color: rgb(253, 250, 242);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.company {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.position {
+  color: grey;
+  font-size: 18px;
+}
+
+.location {
+  color: grey;
+  font-size: 18px;
+}
+
+.status {
+  padding: 6px;
+  text-align: center;
+  border-radius: 2rem;
+  border: 1px solid black;
+}

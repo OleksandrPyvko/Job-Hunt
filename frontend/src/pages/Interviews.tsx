@@ -18,7 +18,7 @@ function Interviews() {
   return (
     <>
       {interviews?.map((application) => (
-        <p>{application.company}</p>
+        <p key={application._id}>{application.company}</p>
       ))}
 
       <h2>Your upcoming interviews</h2>

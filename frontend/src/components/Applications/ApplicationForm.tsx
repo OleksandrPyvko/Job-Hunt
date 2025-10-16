@@ -50,34 +50,47 @@ function ApplicationForm({ ref }: FormProps) {
       onSubmit={handleSubmit}
       className={classes["application-form"]}
     >
-      <label>Company</label>
-      <input required name="company" type="text" />
-      <label>Status</label>
-      <select
-        name="status"
-        id=""
-        onChange={(e) => setIsInterview(e.target.value === "interview")}
-      >
-        <option value="applied">Applied</option>
-        <option value="interview">Interview</option>
-        <option value="offer">Offer</option>
-        <option value="rejected">Rejected</option>
-      </select>
+      <div>
+        <h3>Company information:</h3>
+        <label htmlFor="company">Company</label>
+        <input id="company" required name="company" type="text" />
 
-      {isInterview && (
-        <>
-          <label>Interview on</label>
-          <input name="interview" type="datetime-local" />
-        </>
-      )}
-      <label>Position</label>
-      <input name="position" type="text" />
-      <label>Location</label>
-      <input name="location" type="text" />
-      <label>Applied on</label>
-      <input name="applied" defaultValue={formattedDate} type="date" />
-      <label>Notes</label>
-      <textarea name="notes" />
+        <label>Position</label>
+        <input name="position" type="text" />
+
+        <label>Location</label>
+        <input name="location" type="text" />
+      </div>
+
+      <div>
+        <h3>Application details:</h3>
+        <label htmlFor="status">Status</label>
+        <select
+          name="status"
+          id="status"
+          onChange={(e) => setIsInterview(e.target.value === "interview")}
+        >
+          <option value="applied">Applied</option>
+          <option value="interview">Interview</option>
+          <option value="offer">Offer</option>
+          <option value="rejected">Rejected</option>
+        </select>
+
+        {isInterview && (
+          <>
+            <label>Interview on</label>
+            <input name="interview" type="datetime-local" />
+          </>
+        )}
+
+        <label>Applied on</label>
+        <input name="applied" defaultValue={formattedDate} type="date" />
+      </div>
+
+      <div>
+        <label>Notes</label>
+        <textarea name="notes" />
+      </div>
       <button type="submit">ADD</button>
     </form>
   );

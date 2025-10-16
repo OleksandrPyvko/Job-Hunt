@@ -21,7 +21,7 @@ function ApplicationsTable() {
   if (data?.length === 0)
     return (
       <div className={classes["empty-list"]}>
-        No applications here for now. <br/> Start by adding one!
+        No applications here for now. <br /> Start by adding one!
       </div>
     );
 
@@ -29,8 +29,8 @@ function ApplicationsTable() {
 
   return (
     <div className={classes.tableContainer}>
-      <table>
-        <thead>
+      {/* <table> */}
+        {/* <thead>
           <tr className={classes.tr}>
             <th>Company</th>
             <th>Status</th>
@@ -41,8 +41,8 @@ function ApplicationsTable() {
             <th className={classes.notes}>Notes</th>
             <th>Actions</th>
           </tr>
-        </thead>
-        <tbody>
+        </thead> */}
+        {/* <tbody> */}
           {[...sortedData].reverse().map((application, index) => (
             <ApplicationsRow
               index={index}
@@ -51,8 +51,26 @@ function ApplicationsTable() {
               application={application}
             />
           ))}
-        </tbody>
-      </table>
+        {/* </tbody> */}
+      {/* </table> */}
+
+      {/* {sortedData.map((app) => (
+        <div className={classes.new}>
+          <div>
+            <p className={classes.company}>{app.company}</p>
+            <p className={classes.position}>{app.position}</p>
+            <p className={app.location}>{app.location}</p>
+          </div>
+          <div>
+            <p className={classes.status}>{app.status}</p>
+            <p>{app.applied}</p>
+
+            <div>
+         
+            </div>
+          </div>
+        </div> */}
+      
     </div>
   );
 }

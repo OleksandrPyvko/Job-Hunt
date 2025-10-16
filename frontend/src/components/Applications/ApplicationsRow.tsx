@@ -19,7 +19,6 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
 
   let status;
   switch (application.status) {
-   
     case "interview":
       status = classes.interview;
       break;
@@ -56,7 +55,7 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
 
   return (
     <>
-      <tr className={`${classes.row} ${!isOdd ? classes.darker : ""} ${status}`}>
+      {/* <tr className={`${classes.row} ${!isOdd ? classes.darker : ""} ${status}`}>
         <td>{application.company}</td>
         <td className={status}>{application.status}</td>
         <td>{application.position}</td>
@@ -87,7 +86,51 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
             />
           </button>
         </td>
-      </tr>
+      </tr> */}
+
+      <div className={classes.new}>
+        <div>
+          <p className={classes.company}>{application.company}</p>
+          <p className={classes.position}>{application.position}</p>
+          <p className={application.location}>{application.location}</p>
+        </div>
+
+        <div className={classes.notes}>
+          {application.notes !== "" && (
+            <>
+              <h4>Notes:</h4>
+              <p>{application.notes}</p>
+            </>
+          )}
+        </div>
+        <div className={classes["flex-right"]}>
+          <p className={`${classes.status} ${status}`}>{application.status}</p>
+          <p className={classes.applied}>
+            Applied {new Date(application.applied).toLocaleDateString("en-GB")}
+          </p>
+
+          <div>
+            <button className={classes["action-button"]} onClick={handleUpdate}>
+              <img
+                src="/edit.svg"
+                className={classes["action-icon"]}
+                alt="edit"
+              />
+            </button>
+            <button
+              onClick={() => handleDeletion(id!)}
+              className={classes["action-button"]}
+            >
+              <img
+                src="/delete.svg"
+                className={classes["action-icon"]}
+                alt="delete"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+
       <Modal ref={dialog}>
         <UpdateApplicationForm ref={dialog} applicationId={id} />
       </Modal>
@@ -97,5 +140,8 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
 
 export default ApplicationsRow;
 
-
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis autem quam repellat eveniet illum? Sed rerum suscipit dolorum, cupiditate quidem est culpa voluptatibus at quibusdam dolore facere, nam quae non?</p>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis autem quam
+  repellat eveniet illum? Sed rerum suscipit dolorum, cupiditate quidem est
+  culpa voluptatibus at quibusdam dolore facere, nam quae non?
+</p>;
