@@ -12,6 +12,7 @@ type AuthContextType = {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
   tokenData: MyJWTPayload | null;
   token: string | null;
+  userId?: string | undefined;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);

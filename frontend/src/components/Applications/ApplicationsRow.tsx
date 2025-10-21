@@ -55,39 +55,6 @@ function ApplicationsRow({ application, id, index }: ApplicationRowProps) {
 
   return (
     <>
-      {/* <tr className={`${classes.row} ${!isOdd ? classes.darker : ""} ${status}`}>
-        <td>{application.company}</td>
-        <td className={status}>{application.status}</td>
-        <td>{application.position}</td>
-        <td>{application.location}</td>
-        <td className={classes.date}>
-          {new Date(application.applied).toLocaleDateString("en-GB")}
-        </td>
-        <td className={classes.date}>{application.interview}</td>
-
-        <td className={classes.notes}>{application?.notes}</td>
-
-        <td>
-          <button className={classes["action-button"]} onClick={handleUpdate}>
-            <img
-              src="/edit.svg"
-              className={classes["action-icon"]}
-              alt="edit"
-            />
-          </button>
-          <button
-            onClick={() => handleDeletion(id!)}
-            className={classes["action-button"]}
-          >
-            <img
-              src="/delete.svg"
-              className={classes["action-icon"]}
-              alt="delete"
-            />
-          </button>
-        </td>
-      </tr> */}
-
       <div className={classes.new}>
         <div>
           <p className={classes.company}>{application.company}</p>

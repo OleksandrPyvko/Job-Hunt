@@ -5,19 +5,26 @@ import { useAuth } from "../../context";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { SortData } from "../Filter/SortHelper";
+import type { ApplicationType } from "../../types/types";
 
-function ApplicationsTable() {
-  const { tokenData } = useAuth();
+type PropsType = {
+  data: ApplicationType[];
+}
+
+function ApplicationsTable({data} : PropsType) {
+  // const { tokenData } = useAuth();
   const [searchParams] = useSearchParams();
   const sort = searchParams?.get("sort") || "all";
   const status = searchParams?.get("status") || "all";
 
-  const { data, isPending } = useQuery({
-    queryKey: ["userApplications"],
-    queryFn: () => getUserApplications(tokenData?.userId || ""),
-  });
+  console.log(data)
 
-  if (isPending) return <p>Loading...</p>;
+  // const { data, isPending } = useQuery({
+  //   queryKey: ["userApplications"],
+  //   queryFn: () => getUserApplications(tokenData?.userId || ""),
+  // });
+
+  // if (isPending) return <p>Loading...</p>;
   if (data?.length === 0)
     return (
       <div className={classes["empty-list"]}>
