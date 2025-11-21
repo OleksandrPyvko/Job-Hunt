@@ -1,6 +1,6 @@
 import { useRef, useState, type FormEvent } from "react";
 import type { ApplicationType } from "../../types/types";
-import { useAuth } from "../../context";
+import { useAuth } from "../../contexts/AuthContext";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getApplicationById, updateApplication } from "../../api/http";
 

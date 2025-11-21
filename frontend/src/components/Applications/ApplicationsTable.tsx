@@ -1,7 +1,7 @@
 import ApplicationsRow from "./ApplicationsRow";
 import classes from "./ApplicationsTable.module.css";
 import { getUserApplications } from "../../api/http";
-import { useAuth } from "../../context";
+import { useAuth } from "../../contexts/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 import { SortData } from "../Filter/SortHelper";
@@ -9,15 +9,15 @@ import type { ApplicationType } from "../../types/types";
 
 type PropsType = {
   data: ApplicationType[];
-}
+};
 
-function ApplicationsTable({data} : PropsType) {
+function ApplicationsTable({ data }: PropsType) {
   // const { tokenData } = useAuth();
   const [searchParams] = useSearchParams();
   const sort = searchParams?.get("sort") || "all";
   const status = searchParams?.get("status") || "all";
 
-  console.log(data)
+  console.log(data);
 
   // const { data, isPending } = useQuery({
   //   queryKey: ["userApplications"],
@@ -37,7 +37,7 @@ function ApplicationsTable({data} : PropsType) {
   return (
     <div className={classes.tableContainer}>
       {/* <table> */}
-        {/* <thead>
+      {/* <thead>
           <tr className={classes.tr}>
             <th>Company</th>
             <th>Status</th>
@@ -49,16 +49,16 @@ function ApplicationsTable({data} : PropsType) {
             <th>Actions</th>
           </tr>
         </thead> */}
-        {/* <tbody> */}
-          {[...sortedData].reverse().map((application, index) => (
-            <ApplicationsRow
-              index={index}
-              key={application._id}
-              id={application._id}
-              application={application}
-            />
-          ))}
-        {/* </tbody> */}
+      {/* <tbody> */}
+      {[...sortedData].reverse().map((application, index) => (
+        <ApplicationsRow
+          index={index}
+          key={application._id}
+          id={application._id}
+          application={application}
+        />
+      ))}
+      {/* </tbody> */}
       {/* </table> */}
 
       {/* {sortedData.map((app) => (
@@ -77,7 +77,6 @@ function ApplicationsTable({data} : PropsType) {
             </div>
           </div>
         </div> */}
-      
     </div>
   );
 }

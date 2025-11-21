@@ -3,7 +3,7 @@ import classes from "./ApplicationForm.module.css";
 import addApplication from "../../api/http";
 import { useQueryClient } from "@tanstack/react-query";
 import type { ApplicationType } from "../../types/types";
-import { useAuth } from "../../context";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface FormProps {
   ref: React.RefObject<HTMLDialogElement | null>;

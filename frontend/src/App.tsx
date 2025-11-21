@@ -1,14 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
 import RootLayout from "./layout/RootLayout";
 import Dashboard from "./pages/Dashboard";
 import Applications from "./pages/Applications";
 import Interviews from "./pages/Interviews";
-import Analytics from "./pages/Analytics";
-
 import ProtectedRoute from "./pages/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
-import { AuthContextProvider } from "./context";
+import { AuthContextProvider, MenuContextProvider } from "./contexts/utils";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +15,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Home />,
+      },
+
+      {
+        path: "/dashboard",
         element: (
           <ProtectedRoute>
             <Dashboard />
@@ -31,7 +34,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-     
+
       {
         path: "interviews",
         element: (
@@ -40,14 +43,7 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      {
-        path: "analytics",
-        element: (
-          <ProtectedRoute>
-            <Analytics />
-          </ProtectedRoute>
-        ),
-      },
+
       {
         path: "login",
         element: <LoginPage />,
@@ -67,7 +63,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <AuthContextProvider>
-      <RouterProvider router={router} />
+      <MenuContextProvider>
+        <RouterProvider router={router} />
+      </MenuContextProvider>
     </AuthContextProvider>
   );
 }

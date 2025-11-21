@@ -77,14 +77,14 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
           isLogin ? classes.hidden : classes.visible
         }`}
       >
-        <h2>Sign up</h2>
-        <form id="signup" ref={signupFormRef} onSubmit={handleSignup}>
-          <label htmlFor="">Username</label>
-          <input required name="username" type="text" disabled={isLogin} />
-          <label htmlFor="">Email</label>
-          <input required name="email" type="email" disabled={isLogin} />
-          <label htmlFor="">Password</label>
-          <input
+        <h2 className={classes['auth-h2']}>Sign up</h2>
+        <form className={classes.form} id="signup" ref={signupFormRef} onSubmit={handleSignup}>
+          <label className={classes['auth-label']} htmlFor="">Username</label>
+          <input className={classes['auth-input']} required name="username" type="text" disabled={isLogin} />
+          <label className={classes['auth-label']} htmlFor="">Email</label>
+          <input className={classes['auth-input']} required name="email" type="email" disabled={isLogin} />
+          <label className={classes['auth-label']} htmlFor="">Password</label>
+          <input className={classes['auth-input']}
             required
             minLength={8}
             name="password"
@@ -104,7 +104,7 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
           >
             Sign up
           </Button>
-          <p>
+          <p className={classes['auth-p']}>
             Already have an account?{" "}
             <button
               type="button"
@@ -137,9 +137,9 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
         }`}
       >
         <h2>Login</h2>
-        <form id="login" onSubmit={handleLogin}>
-          <label htmlFor="">Email</label>
-          <input
+        <form className={classes.form} id="login" onSubmit={handleLogin}>
+          <label className={classes['auth-label']} htmlFor="">Email</label>
+          <input className={classes['auth-input']}
             type="email"
             disabled={!isLogin}
             value={email}
@@ -149,8 +149,8 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
             }}
             
           />
-          <label htmlFor="">Password</label>
-          <input
+          <label className={classes['auth-label']} htmlFor="">Password</label>
+          <input className={classes['auth-input']}
             value={password}
             
             type="password"
@@ -173,7 +173,7 @@ function Test({ ref, setIsLoggedIn }: AuthFormProps) {
           >
             {loading ? "Logging in..." : "Log in"}
           </Button>
-          <p>
+          <p className={classes['auth-p']}>
             Don't have an account?{" "}
             <button
               type="button"

@@ -1,9 +1,8 @@
-import classes from "./Applications.module.css";
 import ApplicationsTable from "../components/Applications/ApplicationsTable";
 import Filter from "../components/Filter/Filter";
 import { useQuery } from "@tanstack/react-query";
 import { getUserApplications } from "../api/http";
-import { useAuth } from "../context";
+import { useAuth } from "../contexts/AuthContext";
 
 // type ApplicationType = {
 //   _id: string;
@@ -27,14 +26,14 @@ function Applications() {
   if (isPending) return <p>Loading...</p>;
   if (data?.length === 0)
     return (
-      <div className={classes["empty-list"]}>
+      <div className="">
         No applications here for now. <br /> Start by adding one!
       </div>
     );
   if (isError) return <p>Oops!</p>;
 
   return (
-    <div className={classes.container}>
+    <div className="">
       <Filter />
       <ApplicationsTable data={data ?? []} />
     </div>

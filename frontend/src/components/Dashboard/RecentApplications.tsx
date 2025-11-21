@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useAuth } from "../../context";
+import { useAuth } from "../../contexts/AuthContext";
 import { getUserApplications } from "../../api/http";
 import classes from "./RecentApplications.module.css";
 import type { ApplicationType } from "../../types/types";
@@ -14,12 +14,13 @@ function RecentApplications() {
 
   const recentApplications = data?.slice(-5).reverse();
 
-  if(recentApplications?.length === 0) return (
-    <div className={classes.container}>
+  if (recentApplications?.length === 0)
+    return (
+      <div className={classes.container}>
         <h3 className={classes.title}>Upcoming interviews</h3>
-        <p className={classes['empty-list']}>No applications are added yet</p>
+        <p className={classes["empty-list"]}>No applications are added yet</p>
       </div>
-  )
+    );
 
   return (
     <div className={classes.container}>

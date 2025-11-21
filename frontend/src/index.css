@@ -1,70 +1,50 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
 
-:root {
-  --bg-color: linear-gradient(
-    135deg,
-    oklch(95.514% 0.00011 271.152),
-    oklch(93.514% 0.00011 271.152)
-  );
-  --text-color: #1a1a1a;
-  --accent-color: #00af35;
-  --secondary-bg: oklch(100% 0.00011 271.152);
-}
-
-[data-theme="dark"] {
-  --bg-color: #1a1a1a;
-  --text-color: #f5f5f5;
-  --accent-color: #818cf8;
-  --card-bg: #2a2a2a;
-}
-
-@font-face {
-  font-family: "Author";
-  src: url("/fonts/Author-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Author-semibold";
-  src: url("/fonts/Author-Semibold.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Author-bold";
-  src: url("/fonts/Author-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --accent-blue: #3b82f6;
+  --page-bg: #ffffff;
+  --text-color: #070307;
+  --greyish: #fafafafa;
 }
 
 * {
-  font-family: "Author", sans-serif;
-  font-variant-numeric: lining-nums;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-body {
-  font-size: 18px;
-  min-height: 100dvh;
-  max-height: 100dvh;
-  font-weight: 70;
-  background: var(--bg-color);
+html,
+body,
+#root {
   height: 100%;
 }
 
-#root {
-  min-height: 100dvh;
+body {
+  font-family: var(--font-roboto);
+  color: var(--color-body);
+  background-color: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.bold {
-  font-family: "Author-bold", sans-serif;
-  font-weight: 700;
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }

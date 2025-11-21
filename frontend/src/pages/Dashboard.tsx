@@ -1,11 +1,9 @@
 import Button from "../UI/Button";
-import classes from "./Dashboard.module.css";
 import { useRef } from "react";
 import Modal from "../components/Modal";
 import ApplicationForm from "../components/Applications/ApplicationForm";
-import { useAuth } from "../context";
+import { useAuth } from "../contexts/AuthContext";
 import { getUserApplications } from "../api/http";
-import Overview from "../components/Overview";
 import { useQuery } from "@tanstack/react-query";
 import UpcomingInterviews from "../components/Dashboard/UpcomingInterviews";
 import RecentApplications from "../components/Dashboard/RecentApplications";
@@ -28,15 +26,15 @@ function Dashboard() {
   });
 
   return (
-    <div className={classes.dashboard}>
-      <h2 className={classes.header}>Welcome, {tokenData?.username}</h2>
+    <div className="">
+      <h2 className="">Welcome, {tokenData?.username}</h2>
 
-      <div className={classes.overview}>
-      {/* <Overview data={data ?? []} /> */}
+      <div className="">
+        {/* <Overview data={data ?? []} /> */}
         <RecentApplications />
         <UpcomingInterviews data={data} />
       </div>
-      <div className={classes.actions}>
+      <div className="">
         <Modal ref={dialog} onClose={handleCloseDialog}>
           <ApplicationForm ref={dialog} />
         </Modal>

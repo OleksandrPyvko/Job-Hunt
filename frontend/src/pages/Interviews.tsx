@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { useAuth } from "../context";
+import { useAuth } from "../contexts/AuthContext";
 import EditButton from "../UI/EditButton";
-import classes from "./Interviews.module.css";
 import { getUserApplications } from "../api/http";
 
 function Interviews() {
@@ -22,7 +21,7 @@ function Interviews() {
       ))}
 
       <h2>Your upcoming interviews</h2>
-      <div className={classes.card}>
+      <div className="">
         <h3 className="bold">🏢 Spotify – Frontend Developer</h3>
         <p>🗓️ Jul 5 – 14:00</p>
         <p>🧪 Technical Interview </p>

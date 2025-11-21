@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { useAuth } from "../context";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function ProtectedRoute({ children }: { children: ReactNode }) {
   const { token } = useAuth();
