@@ -1,13 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 
-
 function RootLayout() {
   return (
-    <div className="flex flex-col min-h-screen w-screen">
-      
-        <Header />
-      
+    <div className="flex flex-col min-h-screen  pt-[72px]">
+      <Header />
+
       <main className="container">
         <Outlet />
       </main>

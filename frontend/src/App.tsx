@@ -5,7 +5,7 @@ import Applications from "./pages/Applications";
 import Interviews from "./pages/Interviews";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
-import { AuthContextProvider, MenuContextProvider } from "./contexts/utils";
+import { AuthContextProvider, MenuContextProvider } from "./contexts/providers";
 import Home from "./pages/Home";
 
 const router = createBrowserRouter([
