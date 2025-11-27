@@ -29,14 +29,14 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-picture,
+/* picture,
 video,
 canvas,
 svg {
   display: block;
   max-width: 100%;
   height: auto;
-}
+} */
 
 a {
   text-decoration: none;
@@ -49,9 +49,11 @@ a {
   padding-left: 1rem;
 }
 
+
+
 img {
-  width: 100%;
-  max-width: 420px;
+  /* width: 100%; */
+  /* max-width: 420px; */
   /* border-radius: 8px; */
   object-fit: cover;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);

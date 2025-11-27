@@ -3,7 +3,7 @@ import Header from "./Header";
 
 function RootLayout() {
   return (
-    <div className="flex flex-col min-h-screen  pt-[72px]">
+    <div className="flex flex-col min-h-screen  pt-[73px] items-center">
       <Header />
 
       <main className="container">
