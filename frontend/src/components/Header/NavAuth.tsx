@@ -25,14 +25,14 @@ function NavAuth({
     <>
       {isLoggedIn === false ? (
         <button
-          className="bg-blue-500 rounded-lg h-12 shadow-md  md:h-10 hover:drop-shadow-xl/25 hover:bg-blue-400 md:w-20 text-amber-50 w-[90%] my-auto"
+          className="bg-blue-500 cursor-pointer rounded-lg h-12 shadow-md  md:h-10 hover:drop-shadow-xl/25 hover:bg-sky-400 md:w-20 text-amber-50 w-[90%] my-auto"
           onClick={() => login.current?.showModal()}
         >
           Log in
         </button>
       ) : (
         <button
-          className=" bg-(--page-bg) hover:drop-shadow-xl/25  rounded-lg h-12  outline md:h-10 outline-gray-500/50 w-[90%] md:w-20  "
+          className=" bg-(--page-bg) cursor-pointer hover:drop-shadow-xl/25  rounded-lg h-12  outline md:h-10 outline-gray-500/50 w-[90%] md:w-20  "
           onClick={handleLogout}
         >
           Log out

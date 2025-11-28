@@ -6,7 +6,7 @@ function RootLayout() {
     <div className="flex flex-col min-h-screen  pt-[73px] items-center">
       <Header />
 
-      <main className="container">
+      <main className="container bg-white dark:bg-gray-800">
         <Outlet />
       </main>
       <div className="container">//FOOTER WILL GO HERE</div>

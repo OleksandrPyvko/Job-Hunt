@@ -13,7 +13,7 @@ function Header() {
         <div className="flex justify-between md:justify-start items-center w-full md:w-fit h-full max-h-14">
           <p className="font-black text-4xl italic">
             <NavLink to="/">
-              <p className="text-shadow-lg hover:text-shadow-blue-500 hover:text-white transition-all duration-300 ease-in-out">
+              <p className="text-shadow-lg hover:text-shadow-sky-400 hover:text-white transition-all duration-300 ease-in-out">
                 JH
               </p>
             </NavLink>

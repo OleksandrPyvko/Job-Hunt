@@ -22,8 +22,8 @@ body,
 
 body {
   font-family: var(--font-roboto);
-  color: var(--color-body);
-  background-color: var(--page-bg);
+  
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -52,7 +52,7 @@ a {
 
 
 img {
-  /* width: 100%; */
+  width: 100%;
   /* max-width: 420px; */
   /* border-radius: 8px; */
   object-fit: cover;
