@@ -2,13 +2,13 @@ import heroImg from "../../assets/images/hero.png";
 
 function Hero() {
   return (
-    <div className=" bg-(--greyish) outline outline-black/20 rounded-lg flex flex-col md:flex-row md:py-24 md:mt-18">
-      <div className="px-8 py-8 md:flex-1 md:pl-24 md:flex md:flex-col justify-center flex flex-col items-center md:items-start">
-        <p className="mb-6 font-inter font-semibold text-4xl md:text-8xl/20 text-slate-800">
+    <div className=" bg-(--greyish) dark:bg-(--darkgray) dark:text-slate-300 outline outline-black/20 rounded-lg flex flex-col lg:flex-row lg:py-24 lg:mt-18">
+      <div className="  px-8 py-8 lg:flex-1 lg:pl-24 lg:flex lg:flex-col justify-center flex flex-col items-center lg:items-start">
+        <p className="mb-6 font-inter font-semibold text-4xl lg:text-7xl/20 text-slate-800 md:mt-8 md:text-center md:max-w-[600px] md:text-6xl dark:text-slate-300 lg:text-left">
           Find your next opportunity here
         </p>
 
-        <p className="mb-6">
+        <p className="mb-6 md:max-w-[800px] md:text-center md:text-xl lg:text-left lg:max-w-900px">
           Track every application. Stay organized. Land the job. Your search
           starts now with tools built for the serious candidate.
         </p>
@@ -17,7 +17,7 @@ function Hero() {
           Start now
         </button>
       </div>
-      <div className="py-6 flex justify-center items-center  md:flex-1">
+      <div className="py-6 flex  justify-center items-center  md:flex-1">
         <img src={heroImg} alt="person" className="" />
       </div>
     </div>

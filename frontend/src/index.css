@@ -8,6 +8,8 @@
   --page-bg: #ffffff;
   --text-color: #070307;
   --greyish: #f2f2f2;
+  --darkbg: #070307;
+  --darkgray: #1f1c1f;
 }
 
 * {
@@ -22,8 +24,7 @@ body,
 
 body {
   font-family: var(--font-roboto);
-  
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -48,8 +49,6 @@ a {
   padding-right: 1rem;
   padding-left: 1rem;
 }
-
-
 
 img {
   width: 100%;

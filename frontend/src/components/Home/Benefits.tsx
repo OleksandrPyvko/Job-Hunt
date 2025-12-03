@@ -1,7 +1,62 @@
+import { NavLink } from "react-router-dom";
+import benefits_img from "../../assets/images/benefits.png";
+
 function Benefits() {
-    return (
-        <div></div>
-    )
+  return (
+    <div className=" bg-(--darkbg) text-slate-200 text-center py-14 px-4 rounded-3xl">
+      <div className="pb-14">
+        <p className=" font-semibold">Benefits</p>
+        <h3 className="text-4xl font-bold my-3 ">Why choose us</h3>
+        <p>Designed to help you succeed in your job search journey.</p>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-4 ">
+        <div className="flex flex-col md:flex-row rounded-3xl bg-(--darkgray) overflow-hidden lg:flex-2">
+          <div>
+            <img src={benefits_img} alt="" className="" />
+          </div>
+          <div className="text-left px-8 py-10 flex flex-col justify-center">
+            <p className="font-medium">Efficiency</p>
+            <p className="font-semibold text-3xl my-3">
+              Organize all your applications
+            </p>
+            <p className="mb-6">
+              Keep everything in one place and never lose track.
+            </p>
+            <NavLink className="font-semibold text-sky-400" to="/application">
+              {" "}
+              Explore &gt;{" "}
+            </NavLink>
+          </div>
+        </div>
+        <div className="flex flex-col gap-4 lg:flex-1">
+          <div className="bg-(--darkgray) rounded-3xl flex flex-col text-left px-8 py-10">
+            <p>image</p>
+            <p className="font-semibold text-3xl my-3">Stay informed</p>
+            <p className="mb-6">
+              Know exactly where you stand with each opportunity.
+            </p>
+            <NavLink className="font-semibold text-sky-400" to="/application">
+              {" "}
+              Explore &gt;{" "}
+            </NavLink>
+          </div>
+
+          <div className="bg-(--darkgray) rounded-3xl flex flex-col text-left px-8 py-10">
+            <p>image</p>
+            <p className="font-semibold text-3xl my-3">Prepare better</p>
+            <p className="mb-6">
+              Get ready for interviews with confidence and clarity.
+            </p>
+            <NavLink className="font-semibold text-sky-400" to="/interviews">
+              {" "}
+              Explore &gt;{" "}
+            </NavLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Benefits
+export default Benefits;

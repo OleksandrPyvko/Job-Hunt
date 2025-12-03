@@ -28,7 +28,7 @@ function Navigation() {
             !isMenuOpen
               ? " left-[-100%] opacity-0 pointer-events-none"
               : "opacity-100 pointer-events-auto"
-          } duration-500 ease-in-out bg-white  md:hidden text-xl max-h-[calc(100dvh-70px)] h-full text-left md:flex-row fixed left-0 bottom-0  w-screen   overflow-hidden flex flex-col justify-between`}
+          } duration-500 ease-in-out bg-white dark:bg-(--darkbg)   md:hidden text-xl max-h-[calc(100dvh-70px)] h-full text-left md:flex-row fixed left-0 bottom-0  w-screen   overflow-hidden flex flex-col justify-between`}
         >
           <ul className="flex flex-col justify-center gap-6 py-10 pl-10">
             <li>
