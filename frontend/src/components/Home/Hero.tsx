@@ -13,7 +13,7 @@ function Hero() {
           starts now with tools built for the serious candidate.
         </p>
 
-        <button className="bg-blue-500 hover:bg-sky-400 shadow-md hover:drop-shadow-slate-900 hover:drop-shadow-xl/30   rounded-lg w-[90%] md:w-40 h-12 text-amber-50 cursor-pointer">
+        <button className="bg-blue-500 hover:bg-blue-600 shadow-md hover:drop-shadow-slate-900 hover:drop-shadow-xl/30   rounded-lg w-[90%] md:w-40 h-12 text-amber-50 cursor-pointer">
           Start now
         </button>
       </div>
