@@ -4,11 +4,11 @@ import getStartedImg from "../../assets/images/getReady.png";
 
 function Benefits() {
   return (
-    <>
+    <div className="bg-(--darkbg) text-slate-200 rounded-3xl lg:px-6">
       <div className=" bg-(--darkbg) text-slate-200 text-center py-14 px-4 rounded-3xl">
         <div className="pb-14">
           <p className=" font-semibold">Benefits</p>
-          <h3 className="text-4xl font-bold my-3 ">Why choose us</h3>
+          <h3 className="text-4xl font-bold my-2 ">Why choose us</h3>
           <p>Designed to help you succeed in your job search journey.</p>
         </div>
 
@@ -59,7 +59,7 @@ function Benefits() {
         </div>
       </div>
 
-      <div className="px-4  ">
+      <div className="px-4  pb-10 ">
         <div
           className=" w-full bg-cover bg-center h-64 rounded-xl"
           style={{ backgroundImage: `url(${getStartedImg})` }}
@@ -80,7 +80,7 @@ function Benefits() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

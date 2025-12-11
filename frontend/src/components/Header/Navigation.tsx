@@ -6,6 +6,9 @@ import Modal from "../Modal";
 import Test from "../Test";
 import NavAuth from "./NavAuth";
 
+const linkClass =
+  "text-sky-500 font-semibold border-b-2 border-sky-600 transition-all duration-300 ease-in-out ";
+
 function Navigation() {
   const { setIsLoggedIn } = useAuth();
   const { isMenuOpen, setIsMenuOpen } = useMenu();
@@ -35,7 +38,7 @@ function Navigation() {
               <NavLink
                 onClick={() => setIsMenuOpen(false)}
                 to="/"
-                className={path === "/" ? "bg-accent-blue" : ""}
+                className={path === "/" ? linkClass : "font-semibold"}
               >
                 Home
               </NavLink>
@@ -44,7 +47,7 @@ function Navigation() {
               <NavLink
                 onClick={() => setIsMenuOpen(false)}
                 to="/dashboard"
-                className={path === "/dashboard" ? "bg-accent-blue" : ""}
+                className={path === "/dashboard" ? linkClass : "font-semibold"}
               >
                 Dashboard
               </NavLink>
@@ -53,7 +56,7 @@ function Navigation() {
               <NavLink
                 onClick={() => setIsMenuOpen(false)}
                 to="applications"
-                className={path === "/applications" ? "" : ""}
+                className={path === "/applications" ? linkClass : "font-semibold"}
               >
                 Applications
               </NavLink>
@@ -62,7 +65,7 @@ function Navigation() {
               <NavLink
                 onClick={() => setIsMenuOpen(false)}
                 to="interviews"
-                className={path === "/interviews" ? "" : ""}
+                className={path === "/interviews" ? linkClass : "font-semibold"}
               >
                 Interviews
               </NavLink>
@@ -80,7 +83,11 @@ function Navigation() {
             <li>
               <NavLink
                 to="/dashboard"
-                className={path === "/dashboard" ? "bg-accent-blue" : ""}
+                className={
+                  path === "/dashboard"
+                    ? linkClass
+                    : "font-semibold"
+                }
               >
                 Dashboard
               </NavLink>
@@ -88,7 +95,7 @@ function Navigation() {
             <li>
               <NavLink
                 to="applications"
-                className={path === "/applications" ? "" : ""}
+                className={path === "/applications" ? linkClass : "font-semibold"}
               >
                 Applications
               </NavLink>
@@ -96,7 +103,7 @@ function Navigation() {
             <li>
               <NavLink
                 to="interviews"
-                className={path === "/interviews" ? "" : ""}
+                className={path === "/interviews" ? linkClass : "font-semibold"}
               >
                 Interviews
               </NavLink>

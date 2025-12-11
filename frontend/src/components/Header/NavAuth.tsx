@@ -32,7 +32,7 @@ function NavAuth({
         </button>
       ) : (
         <button
-          className=" bg-(--page-bg) dark:bg-(--darkbg) dark:hover:text-red-500 cursor-pointer dark:hover:bg-slate-900 hover:drop-shadow-xl/25  rounded-lg h-12  outline md:h-10 outline-gray-500/50 w-[90%] md:w-20  "
+          className=" bg-(--page-bg) dark:bg-(--darkbg) hover:text-red-500 cursor-pointer dark:hover:bg-slate-900   rounded-lg h-12  outline md:h-10 outline-gray-500/50 w-[90%] md:w-20  "
           onClick={handleLogout}
         >
           Log out
