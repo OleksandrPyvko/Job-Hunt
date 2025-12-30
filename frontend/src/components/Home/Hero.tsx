@@ -2,7 +2,7 @@ import heroImg from "../../assets/images/hero.png";
 
 function Hero() {
   return (
-    <div className=" bg-(--greyish) dark:bg-(--darkgray) dark:text-gray-300 outline outline-black/20 rounded-lg flex flex-col lg:flex-row lg:py-24 lg:mt-18">
+    <div className="  dark:text-gray-300  outline-black/20 rounded-lg flex flex-col lg:flex-row lg:py-24 lg:mt-18">
       <div className="  px-8 py-8 lg:flex-1 lg:pl-24 lg:flex lg:flex-col justify-center flex flex-col items-center lg:items-start">
         <p className="mb-6 font-inter font-semibold text-4xl lg:text-7xl/20 text-slate-800 md:mt-8 md:text-center md:max-w-[600px] md:text-6xl dark:text-gray-300 lg:text-left">
           Find your next opportunity here

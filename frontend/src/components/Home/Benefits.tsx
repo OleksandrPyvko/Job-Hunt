@@ -25,7 +25,10 @@ function Benefits() {
               <p className="mb-6">
                 Keep everything in one place and never lose track.
               </p>
-              <NavLink className="font-semibold text-sky-400" to="/application">
+              <NavLink
+                className="font-semibold text-sky-400"
+                to="/applications"
+              >
                 {" "}
                 Explore &gt;{" "}
               </NavLink>
@@ -38,7 +41,10 @@ function Benefits() {
               <p className="mb-6">
                 Know exactly where you stand with each opportunity.
               </p>
-              <NavLink className="font-semibold text-sky-400" to="/application">
+              <NavLink
+                className="font-semibold text-sky-400"
+                to="/applications"
+              >
                 {" "}
                 Explore &gt;{" "}
               </NavLink>

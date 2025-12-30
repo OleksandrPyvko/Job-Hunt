@@ -5,7 +5,7 @@ import cardImg3 from "../../assets/images/card3.png";
 
 function Features() {
   return (
-    <div className="py-14">
+    <div className="py-14 px-6">
       <div className="text-center flex flex-col gap-3 my-12">
         <p className="font-semibold dark:text-slate-200">Features</p>
         <p className="text-5xl font-semibold mb-4 dark:text-slate-200">

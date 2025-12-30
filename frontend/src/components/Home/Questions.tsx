@@ -1,6 +1,6 @@
 function Questions() {
   return (
-    <section className=" py-16 max-w-[770px] flex flex-col mx-auto">
+    <section id="FAQ" className=" py-16 max-w-[770px] flex flex-col mx-auto">
       <h2 className="text-4xl font-bold text-center">Questions</h2>
       <p className="text-center mb-10 mt-4">
         Everything you need to know about using Job Seekers Portal.

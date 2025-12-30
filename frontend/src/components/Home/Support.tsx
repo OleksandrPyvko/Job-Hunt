@@ -4,13 +4,15 @@ import ContactItem from "./ContactItem";
 
 function Support() {
   return (
-    <div className="py-10">
+    <section id="support" className="py-10 md:text-center">
       <p className="font-semibold">Support</p>
       <h3 className="text-4xl  my-3">Get in touch</h3>
-      <p className="mb-6">Have questions or need help? We're here to assist you.</p>
+      <p className="mb-6">
+        Have questions or need help? We're here to assist you.
+      </p>
 
       <div>
-        <div>
+        <div className="md:flex md:justify-center md:gap-20 md:text-left">
           <ContactItem
             icon={<MailIcon />}
             title="Email"
@@ -27,9 +29,8 @@ function Support() {
             value="+1 (890) 123-4567"
           />
         </div>
-        <div>map?</div>
       </div>
-    </div>
+    </section>
   );
 }
 
