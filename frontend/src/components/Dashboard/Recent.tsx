@@ -7,11 +7,14 @@ import type { ApplicationType } from "../../types/types";
 function Recent() {
   const { tokenData } = useAuth();
   const { data, isLoading, error } = useQuery({
-    queryFn: () => getUserApplications(tokenData?.userId || ""),
     queryKey: ["userApplications"],
+    queryFn: () => getUserApplications(tokenData?.userId || ""),
   });
 
-  const recentApplications = data?.slice(0, 3) || [];
+  const recentApplications = data?.slice(-3).reverse() || [];
+
+  console.log(data);
+  console.log("rendered last apps", recentApplications);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading recent applications.</div>;

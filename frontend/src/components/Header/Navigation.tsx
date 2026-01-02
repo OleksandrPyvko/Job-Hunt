@@ -17,14 +17,17 @@ function Navigation() {
   const path = location.pathname;
   const login = useRef<HTMLDialogElement>(null);
 
+  function onNavLinkClick() {
+    setIsMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <>
       <nav
         className={`  "text-center flex flex-col md:flex md:flex-row gap-4  h-full md:justify-between md:w-full md:ml-24 md:items-center text-sm`}
       >
         {/* MOBILE*/}
-
-        {/* <div className="md:hidden top-10 left-0 absolute flex md:flex-row flex-col justify-between bg-white w-screen h-[calc(100dvh-40px)] text-xl text-left t-0"></div> */}
 
         <div
           className={` ${
@@ -36,7 +39,7 @@ function Navigation() {
           <ul className="flex flex-col justify-center gap-6 py-10 pl-10">
             <li>
               <NavLink
-                onClick={() => setIsMenuOpen(false)}
+                onClick={onNavLinkClick}
                 to="/"
                 className={path === "/" ? linkClass : "font-semibold"}
               >
@@ -45,7 +48,7 @@ function Navigation() {
             </li>
             <li>
               <NavLink
-                onClick={() => setIsMenuOpen(false)}
+                onClick={onNavLinkClick}
                 to="/dashboard"
                 className={path === "/dashboard" ? linkClass : "font-semibold"}
               >
@@ -54,16 +57,18 @@ function Navigation() {
             </li>
             <li>
               <NavLink
-                onClick={() => setIsMenuOpen(false)}
+                onClick={onNavLinkClick}
                 to="applications"
-                className={path === "/applications" ? linkClass : "font-semibold"}
+                className={
+                  path === "/applications" ? linkClass : "font-semibold"
+                }
               >
                 Applications
               </NavLink>
             </li>
             <li>
               <NavLink
-                onClick={() => setIsMenuOpen(false)}
+                onClick={onNavLinkClick}
                 to="interviews"
                 className={path === "/interviews" ? linkClass : "font-semibold"}
               >
@@ -83,25 +88,26 @@ function Navigation() {
             <li>
               <NavLink
                 to="/dashboard"
-                className={
-                  path === "/dashboard"
-                    ? linkClass
-                    : "font-semibold"
-                }
+                className={path === "/dashboard" ? linkClass : "font-semibold"}
+                onClick={onNavLinkClick}
               >
                 Dashboard
               </NavLink>
             </li>
             <li>
               <NavLink
+                onClick={onNavLinkClick}
                 to="applications"
-                className={path === "/applications" ? linkClass : "font-semibold"}
+                className={
+                  path === "/applications" ? linkClass : "font-semibold"
+                }
               >
                 Applications
               </NavLink>
             </li>
             <li>
               <NavLink
+                onClick={onNavLinkClick}
                 to="interviews"
                 className={path === "/interviews" ? linkClass : "font-semibold"}
               >

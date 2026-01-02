@@ -4,7 +4,7 @@ import getStartedImg from "../../assets/images/getReady.png";
 
 function Benefits() {
   return (
-    <div className="bg-(--darkbg) text-slate-200 rounded-3xl lg:px-6">
+    <div className="bg-(--darkbg) text-slate-200 rounded-3xl lg:px-6 ">
       <div className=" bg-(--darkbg) text-slate-200 text-center py-14 px-4 rounded-3xl">
         <div className="pb-14">
           <p className=" font-semibold">Benefits</p>
@@ -12,12 +12,16 @@ function Benefits() {
           <p>Designed to help you succeed in your job search journey.</p>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-4 ">
-          <div className="flex flex-col md:flex-row rounded-3xl bg-(--darkgray) overflow-hidden lg:flex-2">
-            <div>
-              <img src={benefits_img} alt="" className="" />
+        <div className="flex flex-col lg:flex-row gap-4 lg:max-h-[650px]">
+          <div className="flex rounded-3xl md:flex-row bg-(--darkgray) flex-col lg:flex-row overflow-hidden lg:flex-2">
+            <div className="h-full  lg:max-h-[650px] ">
+              <img
+                src={benefits_img}
+                alt=""
+                className="h-full md:max-h-[650px] max-h-[400px] object-top"
+              />
             </div>
-            <div className="text-left px-8 py-10 flex flex-col justify-center">
+            <div className="text-left px-8 py-10 flex  flex-col justify-center bg-black/50">
               <p className="font-medium">Efficiency</p>
               <p className="font-semibold text-3xl my-3">
                 Organize all your applications
@@ -29,12 +33,11 @@ function Benefits() {
                 className="font-semibold text-sky-400"
                 to="/applications"
               >
-                {" "}
-                Explore &gt;{" "}
+                Explore &gt;
               </NavLink>
             </div>
           </div>
-          <div className="flex flex-col gap-4 lg:flex-1">
+          <div className="flex flex-col gap-4 md:flex-row lg:flex-col lg:flex-1">
             <div className="bg-(--darkgray) rounded-3xl flex flex-col text-left px-8 py-10">
               <p>image</p>
               <p className="font-semibold text-3xl my-3">Stay informed</p>

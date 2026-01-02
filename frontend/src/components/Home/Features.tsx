@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import cardImg1 from "../../assets/images/card.png";
 import cardImg2 from "../../assets/images/card2.png";
 import cardImg3 from "../../assets/images/card3.png";
 
