@@ -21,7 +21,7 @@ function Benefits() {
                 className="h-full md:max-h-[650px] max-h-[400px] object-top"
               />
             </div>
-            <div className="text-left px-8 py-10 flex  flex-col justify-center bg-black/50">
+            <div className="text-left px-8 py-10 flex  flex-col justify-center ">
               <p className="font-medium">Efficiency</p>
               <p className="font-semibold text-3xl my-3">
                 Organize all your applications
