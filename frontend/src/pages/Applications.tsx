@@ -27,12 +27,7 @@ function Applications() {
         <div
           id="addApplicationPopover"
           popover="auto"
-          className="mx-auto my-auto opacity-0 translate-y-4 scale-95
-                     transition-all duration-300 ease-out
-                     transition-discrete
-                     [&:popover-open]:opacity-100
-                     [&:popover-open]:translate-y-0
-                     [&:popover-open]:scale-100"
+          className="mx-auto my-auto opacity-100 starting:open:opacity-0 transition-all ease-in-out duration-500 "
         >
           Woo, it's a popover window
           <button
