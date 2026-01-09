@@ -46,7 +46,8 @@ function Results() {
             <p className="text-5xl font-bold mb-6">{data?.length}</p>
             <p className="font-medium">Applications sent out</p>
             <p className="hidden md:block">
-              You've made your move. Now wait and see.
+              {data?.length === 0 && "Make your move"}
+              {data?.length === 1 && `You've made your move. Now wait and see.`}
             </p>
           </div>
         </div>
@@ -83,7 +84,9 @@ function Results() {
               <div>
                 <p className="text-5xl font-bold mb-6">{offersCount}</p>
                 <p className="font-medium">Offers in hand</p>
-                <p>The work is paying off. Consider your options.</p>
+                <p className="hidden md:block">
+                  The work is paying off. Consider your options.
+                </p>
               </div>
             ) : (
               <div className=" flex items-center justify-center h-full w-full">
