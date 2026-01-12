@@ -1,15 +1,10 @@
 import { useRef, useState, type FormEvent } from "react";
-import classes from "./ApplicationForm.module.css";
 import addApplication from "../../api/http";
 import { useQueryClient } from "@tanstack/react-query";
 import type { ApplicationType } from "../../types/types";
 import { useAuth } from "../../contexts/AuthContext";
 
-interface FormProps {
-  ref: React.RefObject<HTMLDialogElement | null>;
-}
-
-function ApplicationForm({ ref }: FormProps) {
+function ApplicationForm() {
   const [isInterview, setIsInterview] = useState(false);
   const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -35,7 +30,6 @@ function ApplicationForm({ ref }: FormProps) {
     try {
       await addApplication(application);
       formRef.current?.reset();
-      ref.current?.close();
     } catch (e) {
       console.error(e);
     } finally {
@@ -48,50 +42,126 @@ function ApplicationForm({ ref }: FormProps) {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className={classes["application-form"]}
+      className="bg-indigo-50 dark:bg-(--darkgray) p-6 rounded-lg shadow-lg space-y-4 min-w-96"
     >
-      <div>
-        <h3>Company information:</h3>
-        <label htmlFor="company">Company</label>
-        <input id="company" required name="company" type="text" />
+      <div className="space-y-3">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+          Company information:
+        </h3>
+        <div>
+          <label
+            htmlFor="company"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          >
+            Company
+          </label>
+          <input
+            id="company"
+            required
+            name="company"
+            type="text"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          />
+        </div>
 
-        <label>Position</label>
-        <input name="position" type="text" />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Position
+          </label>
+          <input
+            name="position"
+            type="text"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          />
+        </div>
 
-        <label>Location</label>
-        <input name="location" type="text" />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Location
+          </label>
+          <input
+            name="location"
+            type="text"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          />
+        </div>
       </div>
 
-      <div>
-        <h3>Application details:</h3>
-        <label htmlFor="status">Status</label>
-        <select
-          name="status"
-          id="status"
-          onChange={(e) => setIsInterview(e.target.value === "interview")}
-        >
-          <option value="applied">Applied</option>
-          <option value="interview">Interview</option>
-          <option value="offer">Offer</option>
-          <option value="rejected">Rejected</option>
-        </select>
+      <div className="space-y-3">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
+          Application details:
+        </h3>
+        <div>
+          <label
+            htmlFor="status"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+          >
+            Status
+          </label>
+          <select
+            name="status"
+            id="status"
+            onChange={(e) => setIsInterview(e.target.value === "interview")}
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          >
+            <option value="applied">Applied</option>
+            <option value="interview">Interview</option>
+            <option value="offer">Offer</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
 
         {isInterview && (
-          <>
-            <label>Interview on</label>
-            <input name="interview" type="datetime-local" />
-          </>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Interview on
+            </label>
+            <input
+              name="interview"
+              type="datetime-local"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            />
+          </div>
         )}
 
-        <label>Applied on</label>
-        <input name="applied" defaultValue={formattedDate} type="date" />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Applied on
+          </label>
+          <input
+            name="applied"
+            defaultValue={formattedDate}
+            type="date"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          />
+        </div>
       </div>
 
-      <div>
-        <label>Notes</label>
-        <textarea name="notes" />
+      <div className="space-y-3">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Notes
+        </label>
+        <textarea
+          name="notes"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        />
       </div>
-      <button type="submit">ADD</button>
+      <div className="flex gap-3 pt-4">
+        <button
+          type="submit"
+          className="flex-1 bg-sky-500 hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-700 text-white font-semibold py-2 rounded-md transition-colors"
+        >
+          ADD
+        </button>
+        <button
+          type="button"
+          popoverTargetAction="hide"
+          popoverTarget="addApplicationPopover"
+          className="flex-1 bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 font-semibold py-2 rounded-md transition-colors"
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

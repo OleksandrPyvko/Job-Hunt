@@ -11,7 +11,7 @@ function Header() {
   }
 
   return (
-    <header className="flex md:flex-row items-center border-b border-b-gray-200 dark:border-b-(--darkgray) w-full h-18  fixed top-0 left-0 bg-white  dark:bg-(--darkbg) dark:text-slate-200 z-50">
+    <header className="flex md:flex-row items-center border-b border-b-gray-200 dark:border-b-(--darkgray) w-full h-18  fixed top-0 left-0 bg-white  dark:bg-(--darkbg) dark:text-slate-200 z-20">
       <div className="max-w-[1440px] mx-auto flex w-full px-4 md:px-16 ">
         <div className="flex justify-between md:justify-start items-center w-full md:w-fit h-full max-h-14">
           <div className="font-black text-4xl italic">
