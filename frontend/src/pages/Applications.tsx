@@ -69,7 +69,7 @@ function Applications() {
   if (isError) return <p>Oops!</p>;
 
   return (
-    <div className="min-h-[calc(100vh-80px)]">
+    <div className="min-h-[calc(100vh-80px)] pt-4">
       <Filter />
       <ApplicationsList data={data ?? []} />
     </div>

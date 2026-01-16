@@ -11,14 +11,6 @@ function ApplicationsList({ data }: PropsType) {
   const [searchParams] = useSearchParams();
   const sort = searchParams?.get("sort") || "all";
   const status = searchParams?.get("status") || "all";
-
-  if (data?.length === 0)
-    return (
-      <>
-        
-      </>
-    );
-
   const sortedData = SortData(data || [], sort, status);
 
   return (

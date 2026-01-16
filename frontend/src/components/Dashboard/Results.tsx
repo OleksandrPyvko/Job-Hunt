@@ -42,7 +42,7 @@ function Results() {
 
       <div className=" gap-6 grid  grid-cols-2  md:grid-cols-3  md:grid-rows-2 ">
         <div className=" flex gap-6 md:flex-row flex-col md:flex md:row-span-2 md:col-span-1 w-full ">
-          <div className="  dark:bg-(--darkgray) rounded-lg border border-neutral-700 p-7 w-full">
+          <div className="  dark:bg-neutral-900 rounded-lg border border-neutral-700 p-7 w-full">
             <p className="text-5xl font-bold mb-6">{data?.length}</p>
             <p className="font-medium">Applications sent out</p>
             <p className="hidden md:block">
@@ -56,7 +56,7 @@ function Results() {
         </div>
 
         <div className=" flex gap-6 md:flex-row flex-col md:flex ">
-          <div className="dark:bg-(--darkgray) rounded-lg p-7 w-full border border-neutral-700">
+          <div className="dark:bg-neutral-900 rounded-lg p-7 w-full border border-neutral-700">
             {interviewsCount > 0 ? (
               <>
                 <p className="text-5xl font-bold mb-6">{interviewsCount}</p>
@@ -79,7 +79,7 @@ function Results() {
         </div>
 
         <div className=" flex gap-6 md:flex-row flex-col md:flex border rounded-lg border-neutral-700">
-          <div className="dark:bg-(--darkgray) rounded-lg p-7 h-full w-full">
+          <div className="dark:bg-neutral-900 rounded-lg p-7 h-full w-full">
             {offersCount > 0 ? (
               <div>
                 <p className="text-5xl font-bold mb-6">{offersCount}</p>

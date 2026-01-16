@@ -43,63 +43,87 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
 
   return (
     <>
-      <div className=" outline outline-slate-500 max-w-[600px] mb-4 mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4 p-4  rounded shadow-sm">
-        <div className="flex-1 min-w-0">
-          <p className="text-lg font-semibold  truncate">
-            {application.company}
-          </p>
-          <p className="text-sm text-gray-600 dark:text-slate-300 truncate">
-            {application.position}
-          </p>
-          <p className="text-sm text-gray-500 mt-1 truncate">
-            {application.location}
-          </p>
-        </div>
-
-        <div className="flex-1 min-w-0">
-          {application.notes !== "" && (
-            <div className="mt-2 md:mt-0">
-              <h4 className="text-sm font-medium text-gray-700">Notes</h4>
-              <p
-                className={`text-sm text-gray-700 dark:text-gray-400 mt-1 ${
-                  expanded ? "" : "line-clamp-3"
-                }`}
-              >
-                {application.notes}
-              </p>
-              {application.notes && application.notes.length > 180 && (
-                <button
-                  className="text-xs text-(--accent-blue) mt-1"
-                  onClick={() => setExpanded((s) => !s)}
-                >
-                  {expanded ? "Show less" : "Show more"}
-                </button>
-              )}
+      <div className="max-w-[760px] mx-auto mb-4 p-4 bg-slate-50 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-150">
+        <div className="flex gap-4 md:gap-6 items-start">
+          <div className="flex-shrink-0">
+            <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 text-white flex items-center justify-center font-bold text-lg shadow-md">
+              {application.company
+                ? application.company.charAt(0).toUpperCase()
+                : "?"}
             </div>
-          )}
-        </div>
+          </div>
 
-        <div className="flex flex-col items-end gap-2">
-          <StatusBadge status={application.status} />
-          <p className="text-xs text-gray-500">
-            Applied {new Date(application.applied).toLocaleDateString("en-GB")}
-          </p>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <p className="text-lg font-semibold leading-tight truncate">
+                  {application.company}
+                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-300 truncate">
+                  {application.position}
+                </p>
+                <div className="mt-1 flex items-center gap-2">
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                    {application.location}
+                  </span>
+                  <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                    Applied{" "}
+                    {new Date(application.applied).toLocaleDateString("en-GB")}
+                  </span>
+                </div>
+              </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleUpdate}
-              aria-label={`Edit application at ${application.company}`}
-              className="p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-sky-500"
-            >
-              <EditIcon className="w-4 h-4 " />
-            </button>
-            <button
-              onClick={() => handleDeletion(id!)}
-              aria-label={`Delete application at ${application.company}`}
-              className="p-2 rounded-md hover:bg-red-200 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-red-500"
-            >
-              <DeleteIcon className="w-4 h-4 text-red-600" />
-            </button>
+              <div className="flex flex-col items-end gap-2">
+                <StatusBadge status={application.status} />
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleUpdate}
+                    aria-label={`Edit application at ${application.company}`}
+                    className="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                  >
+                    <EditIcon className="w-4 h-4 text-slate-700 dark:text-slate-200" />
+                  </button>
+                  <button
+                    onClick={() => handleDeletion(id!)}
+                    aria-label={`Delete application at ${application.company}`}
+                    className="p-2 rounded-md hover:bg-red-100 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-red-400"
+                  >
+                    <DeleteIcon className="w-4 h-4 text-red-600" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {application.notes !== "" && (
+              <div className="mt-3">
+                <h4 className="text-sm font-medium text-slate-600 dark:text-slate-300">
+                  Notes
+                </h4>
+                <div className="relative mt-1">
+                  <p
+                    className={`text-sm text-slate-700 dark:text-slate-300 leading-relaxed ${
+                      expanded ? "" : "line-clamp-3"
+                    }`}
+                  >
+                    {application.notes}
+                  </p>
+                  {!expanded &&
+                    application.notes &&
+                    application.notes.length > 160 && (
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white/90 dark:from-slate-900/90" />
+                    )}
+                </div>
+                {application.notes && application.notes.length > 160 && (
+                  <button
+                    className="mt-2 text-xs text-sky-600 dark:text-sky-400 font-medium"
+                    onClick={() => setExpanded((s) => !s)}
+                  >
+                    {expanded ? "Show less" : "Show more"}
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -37,7 +37,6 @@ h6 {
 
 body {
   font-family: var(--font-roboto);
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
@@ -65,9 +64,12 @@ a {
 
 img {
   width: 100%;
-  /* max-width: 420px; */
-  /* border-radius: 8px; */
   object-fit: cover;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
+#addApplicationPopover::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}

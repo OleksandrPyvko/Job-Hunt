@@ -1,6 +1,9 @@
 function Questions() {
   return (
-    <section id="FAQ" className=" py-16 max-w-[770px] flex flex-col mx-auto">
+    <div
+      id="FAQ"
+      className=" py-16 min-h-screen max-w-[770px] flex flex-col mx-auto justify-center"
+    >
       <h2 className="text-4xl font-bold text-center">Questions</h2>
       <p className="text-center mb-10 mt-4">
         Everything you need to know about using Job Seekers Portal.
@@ -33,7 +36,7 @@ function Questions() {
         Absolutely. In the applications section, each entry has edit and delete
         buttons. Update details or remove entries as needed.
       </p>
-    </section>
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ import ContactItem from "./ContactItem";
 
 function Support() {
   return (
-    <section id="support" className="py-10 md:text-center">
+    <section id="support" className="py-28   md:text-center border-t border-neutral-700">
       <p className="font-semibold">Support</p>
       <h3 className="text-4xl  my-3">Get in touch</h3>
       <p className="mb-6">

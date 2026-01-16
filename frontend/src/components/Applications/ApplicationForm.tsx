@@ -4,7 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import type { ApplicationType } from "../../types/types";
 import { useAuth } from "../../contexts/AuthContext";
 
-function ApplicationForm() {
+function AddApplicationForm() {
   const [isInterview, setIsInterview] = useState(false);
   const queryClient = useQueryClient();
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -30,6 +30,9 @@ function ApplicationForm() {
     try {
       await addApplication(application);
       formRef.current?.reset();
+
+      const popover = document.getElementById("addApplicationPopover");
+      popover?.hidePopover?.();
     } catch (e) {
       console.error(e);
     } finally {
@@ -42,7 +45,7 @@ function ApplicationForm() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="bg-indigo-50 dark:bg-(--darkgray) p-6 rounded-lg shadow-lg space-y-4 min-w-96"
+      className="bg-indigo-50 dark:bg-neutral-900 p-6 rounded-lg shadow-lg space-y-4 min-w-96"
     >
       <div className="space-y-3">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
@@ -60,7 +63,7 @@ function ApplicationForm() {
             required
             name="company"
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           />
         </div>
 
@@ -71,7 +74,7 @@ function ApplicationForm() {
           <input
             name="position"
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           />
         </div>
 
@@ -82,7 +85,7 @@ function ApplicationForm() {
           <input
             name="location"
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           />
         </div>
       </div>
@@ -102,7 +105,7 @@ function ApplicationForm() {
             name="status"
             id="status"
             onChange={(e) => setIsInterview(e.target.value === "interview")}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           >
             <option value="applied">Applied</option>
             <option value="interview">Interview</option>
@@ -119,7 +122,7 @@ function ApplicationForm() {
             <input
               name="interview"
               type="datetime-local"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
             />
           </div>
         )}
@@ -132,7 +135,7 @@ function ApplicationForm() {
             name="applied"
             defaultValue={formattedDate}
             type="date"
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
           />
         </div>
       </div>
@@ -143,7 +146,7 @@ function ApplicationForm() {
         </label>
         <textarea
           name="notes"
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
         />
       </div>
       <div className="flex gap-3 pt-4">
@@ -166,4 +169,4 @@ function ApplicationForm() {
   );
 }
 
-export default ApplicationForm;
+export default AddApplicationForm;
