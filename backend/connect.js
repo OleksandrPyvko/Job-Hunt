@@ -1,8 +1,14 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 require("dotenv").config({ path: "./config.env" });
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(process.env.ATLAS_URI, {
+const ATLAS_URI = process.env.ATLAS_URI;
+const DB_NAME = process.env.DB_NAME || "JobHuntDB";
+
+if (!ATLAS_URI) {
+  throw new Error("Missing ATLAS_URI in backend/config.env");
+}
+
+const client = new MongoClient(ATLAS_URI, {
   serverApi: {
     version: ServerApiVersion.v1,
     strict: true,
@@ -13,10 +19,15 @@ const client = new MongoClient(process.env.ATLAS_URI, {
 let database;
 
 module.exports = {
-  connectToServer: () => {
-    database = client.db("JobHuntDB");
+  connectToServer: async () => {
+    await client.connect();
+    database = client.db(DB_NAME);
+    console.log(`Connected to MongoDB database: ${DB_NAME}`);
   },
   getDb: () => {
+    if (!database) {
+      throw new Error("Database not initialized. Call connectToServer first.");
+    }
     return database;
   },
 };

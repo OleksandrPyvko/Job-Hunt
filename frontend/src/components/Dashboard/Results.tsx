@@ -28,8 +28,8 @@ function Results() {
     <div className="flex flex-col  md:py-16 gap-16 max-w-[900px]  mx-auto ">
       <div className="md:flex justify-between">
         <div>
-          <p>Results</p>
-          <h3 className="text-3xl font-semibold my-4 max-w-64">
+          <p className="text-sm uppercase tracking-[0.24em] text-sky-600 font-semibold">Results</p>
+          <h3 className="text-3xl font-semibold my-4 max-w-64 ">
             How your search is moving
           </h3>
           <p className="max-w-lg   ">

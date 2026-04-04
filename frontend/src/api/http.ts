@@ -94,6 +94,15 @@ export async function deleteApplication(id: string) {
   }
 }
 
+async function parseResponse(response: Response) {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    return { message: text || "Unexpected server response" };
+  }
+}
+
 export async function registerUser(newUser: UserType) {
   try {
     const response = await fetch("http://localhost:3000/auth/signup", {
@@ -101,7 +110,11 @@ export async function registerUser(newUser: UserType) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),
     });
-    return await response.json();
+    const data = await parseResponse(response);
+    if (!response.ok) {
+      throw new Error(data.message || "Signup failed");
+    }
+    return data;
   } catch (e) {
     console.error(e);
     throw e;
@@ -121,7 +134,11 @@ export async function loginUser({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
-    return await response.json();
+    const data = await parseResponse(response);
+    if (!response.ok) {
+      throw new Error(data.message || "Login failed");
+    }
+    return data;
   } catch (e) {
     console.error(e);
     throw e;
