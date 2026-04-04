@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../contexts/AuthContext";
 import { getUserApplications } from "../api/http";
-import ApplicationCard from "../components/Applications/ApplicationCard";
 import InterviewCard from "../components/Interviews/InterviewCard";
 
 function Interviews() {
+  const [expanded, setExpanded] = useState(false);
   const { tokenData } = useAuth();
   const { data, isPending, isError } = useQuery({
     queryFn: () => getUserApplications(tokenData?.userId || ""),

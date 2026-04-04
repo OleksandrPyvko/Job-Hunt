@@ -9,7 +9,7 @@ function Hero() {
         </p>
       </div>
       <div className="flex text-center items-start justify-center md:justify-end md:text-right">
-        <p className="md:text-xl lg:text-2xl mt-12 mb-auto md:max-w-[350px] lg:max-w-[420px]">
+        <p className="md:text-xl text-slate-700 dark:text-neutral-300 font-semibold lg:text-2xl mt-12  mb-auto md:max-w-[350px] lg:max-w-[420px]">
           Track every application. Stay organized. Land the job. Your search
           starts now with tools built for the serious candidate.
         </p>

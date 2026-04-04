@@ -31,7 +31,7 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
 
   async function handleDeletion(id: string) {
     const confirmed = confirm(
-      "Are you sure you want to delete this application?"
+      "Are you sure you want to delete this application?",
     );
     if (!confirmed) return;
     deleteMutation(id);
@@ -102,8 +102,8 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
                 </h4>
                 <div className="relative mt-1">
                   <p
-                    className={`text-sm text-slate-700 dark:text-slate-300 leading-relaxed ${
-                      expanded ? "" : "line-clamp-3"
+                    className={`text-sm text-slate-700 max-w-[80%]  dark:text-slate-300 leading-relaxed ${
+                      expanded ? "" : "line-clamp-2"
                     }`}
                   >
                     {application.notes}
@@ -111,13 +111,13 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
                   {!expanded &&
                     application.notes &&
                     application.notes.length > 160 && (
-                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white/90 dark:from-slate-900/90" />
+                      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-linear-to-t from-white/90 dark:from-neutral-900/90" />
                     )}
                 </div>
                 {application.notes && application.notes.length > 160 && (
                   <button
                     className="mt-2 text-xs text-sky-600 dark:text-sky-400 font-medium"
-                    onClick={() => setExpanded((s) => !s)}
+                    onClick={() => setExpanded((prev) => !prev)}
                   >
                     {expanded ? "Show less" : "Show more"}
                   </button>
