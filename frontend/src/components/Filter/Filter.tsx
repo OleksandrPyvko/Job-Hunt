@@ -18,8 +18,8 @@ export default function Filter() {
   };
 
   return (
-    <div className="max-w-[760px] mx-auto mb-6">
-      <div className="bg-white/80 dark:bg-(--darkbg) border border-slate-200 dark:border-none rounded-lg p-4 shadow-sm flex flex-col md:flex-row items-center gap-4 md:gap-6">
+    <div className="max-w-[760px] mx-auto mb-6 ">
+      <div className="bg-white/80 px-2 dark:bg-(--darkbg) border border-slate-200 dark:border-none rounded-lg py-4 shadow-sm flex flex-col md:flex-row items-center gap-4 md:gap-6">
         <div className="flex-1 w-full flex gap-3 md:gap-4 items-center">
           <div className="flex-1 min-w-0 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             <label className="flex flex-col text-sm text-slate-600 dark:text-slate-300">

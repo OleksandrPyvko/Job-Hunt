@@ -1,6 +1,5 @@
 import { useRef, useState, type FormEvent } from "react";
 import type { ApplicationType } from "../../types/types";
-import { useAuth } from "../../contexts/AuthContext";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getApplicationById, updateApplication } from "../../api/http";
 
@@ -11,7 +10,7 @@ type Props = {
 
 function UpdateApplicationForm({ ref, applicationId }: Props) {
   const queryClient = useQueryClient();
-  const formRef = useRef<HTMLFormElement | null>(null);
+  // const formRef = useRef<HTMLFormElement | null>(null);
   const [isInterview, setIsInterview] = useState<boolean>(false);
 
   const formattedDate = new Date().toISOString().split("T")[0];
@@ -65,15 +64,31 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
     };
 
     mutate({ id: applicationId, updatedApplication });
-    ref.current?.close();
+    // ref.current?.close();
+    const popover = document.getElementById("updateApplicationPopover");
+    popover?.hidePopover?.();
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit}>
-      <label>Company</label>
-      <input name="company" type="text" defaultValue={data.company} />
-      <label>Status</label>
+    <form
+      // ref={formRef}
+      onSubmit={handleSubmit}
+      className="bg-indigo-50 dark:bg-neutral-900 p-6 rounded-lg shadow-lg space-y-4 min-w-96"
+    >
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        Company
+      </label>
+      <input
+        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        name="company"
+        type="text"
+        defaultValue={data.company}
+      />
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
+        Status
+      </label>
       <select
+        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
         name="status"
         id=""
         defaultValue={data.status}
@@ -87,8 +102,11 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
 
       {(isInterview || data.status === "interview") && (
         <>
-          <label>Interview on</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
+            Interview on
+          </label>
           <input
+            className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
             name="interview"
             defaultValue={data.interview}
             type="datetime-local"
@@ -96,15 +114,52 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
         </>
       )}
 
-      <label>Position</label>
-      <input name="position" type="text" defaultValue={data.position} />
-      <label>Location</label>
-      <input name="location" type="text" defaultValue={data.location} />
-      <label>Applied on</label>
-      <input name="applied" defaultValue={formattedDate} type="date" />
-      <label>Notes</label>
-      <textarea name="notes" defaultValue={data.notes} />
-      <button type="submit">Confirm</button>
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
+        Position
+      </label>
+      <input
+        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        name="position"
+        type="text"
+        defaultValue={data.position}
+      />
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
+        Location
+      </label>
+      <input
+        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        name="location"
+        type="text"
+        defaultValue={data.location}
+      />
+      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
+        Applied on
+      </label>
+      <input
+        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        name="applied"
+        defaultValue={formattedDate}
+        type="date"
+      />
+      <div className="space-y-3">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
+          Notes
+        </label>
+        <textarea
+          className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          name="notes"
+          defaultValue={data.notes}
+        />
+      </div>
+      <div className="flex ">
+        <button
+          popoverTarget="updateApplicationPopover"
+          className="flex-1 bg-sky-500 hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-700 text-white font-semibold py-2 rounded-md transition-colors"
+          type="submit"
+        >
+          Confirm
+        </button>
+      </div>
     </form>
   );
 }

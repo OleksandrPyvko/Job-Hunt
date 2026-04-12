@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import ScrollToHash from "../components/Footer/helper";
@@ -13,6 +13,7 @@ function RootLayout() {
         <Outlet />
       </main>
       <Footer />
+      <ScrollRestoration />
     </div>
   );
 }

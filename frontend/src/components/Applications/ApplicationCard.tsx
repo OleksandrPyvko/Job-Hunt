@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteApplication } from "../../api/http";
 import type { ApplicationType } from "../../types/types";
 import { useRef, useState } from "react";
-import Modal from "../Modal";
 import UpdateApplicationForm from "./UpdateApplicationForm";
 import StatusBadge from "./StatusBadge";
 import EditIcon from "../Icons/EditIcon";
@@ -37,9 +36,6 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
     deleteMutation(id);
   }
 
-  async function handleUpdate() {
-    dialog.current?.showModal();
-  }
 
   return (
     <>
@@ -78,7 +74,7 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
                 <StatusBadge status={application.status} />
                 <div className="flex items-center gap-2">
                   <button
-                    onClick={handleUpdate}
+                    popoverTarget={`updateApplicationPopover`}
                     aria-label={`Edit application at ${application.company}`}
                     className="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   >
@@ -128,9 +124,15 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
         </div>
       </div>
 
-      <Modal ref={dialog}>
+
+      <div
+        id="updateApplicationPopover"
+        popover="auto"
+        className="fixed  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl z-50 bg-white dark:bg-slate-900 opacity-100 starting:open:opacity-0 transition-all ease-in-out duration-500 "
+      >
         <UpdateApplicationForm ref={dialog} applicationId={id} />
-      </Modal>
+      </div>
+
     </>
   );
 }

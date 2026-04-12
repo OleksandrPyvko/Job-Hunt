@@ -59,7 +59,6 @@ function Applications() {
           <ApplicationForm />
         </div>
 
-        
         <div
           className="hidden [#addApplicationPopover:popover-open~&]:block fixed inset-0 bg-black/50 dark:bg-black/70 z-40"
           aria-hidden
@@ -69,7 +68,7 @@ function Applications() {
   if (isError) return <p>Oops!</p>;
 
   return (
-    <div className="min-h-[calc(100vh-80px)] pt-4">
+    <div id="applications" className="min-h-[calc(100vh-80px)]  py-8 ">
       <Filter />
       <ApplicationsList data={data ?? []} />
     </div>

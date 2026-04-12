@@ -15,6 +15,7 @@ function ApplicationsList({ data }: PropsType) {
 
   return (
     <div>
+      
       {[...sortedData].reverse().map((application, index) => (
         <ApplicationCard
           index={index}

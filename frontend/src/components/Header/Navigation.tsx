@@ -118,9 +118,9 @@ function Navigation() {
           <NavAuth login={login} />
         </div>
       </nav>
-      <Modal ref={login} onClose={() => login.current?.close()}>
+      {/* <Modal ref={login} onClose={() => login.current?.close()}>
         <Test ref={login} setIsLoggedIn={setIsLoggedIn} />
-      </Modal>
+      </Modal> */}
     </>
   );
 }

@@ -1,16 +1,20 @@
 import { useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useMenu } from "../../contexts/MenuContext";
 
-function NavAuth({
-  login,
-}: {
-  login: React.RefObject<HTMLDialogElement | null>;
-}) {
+function NavAuth() {
   const { setIsLoggedIn, isLoggedIn, token } = useAuth();
+  const navigate = useNavigate();
+  const { setIsMenuOpen } = useMenu();
 
   function handleLogout() {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+  }
+
+  function handleLogin() {
+    navigate("/login");
   }
 
   useEffect(() => {
@@ -26,7 +30,10 @@ function NavAuth({
       {isLoggedIn === false ? (
         <button
           className="bg-blue-500 cursor-pointer rounded-lg h-12 shadow-md  md:h-10 hover:drop-shadow-xl/25 hover:bg-blue-600 md:w-20 text-amber-50 w-[90%] my-auto"
-          onClick={() => login.current?.showModal()}
+          onClick={() => {
+            setIsMenuOpen(false);
+            handleLogin();
+          }}
         >
           Log in
         </button>

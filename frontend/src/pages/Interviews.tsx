@@ -4,7 +4,6 @@ import { getUserApplications } from "../api/http";
 import InterviewCard from "../components/Interviews/InterviewCard";
 
 function Interviews() {
-  const [expanded, setExpanded] = useState(false);
   const { tokenData } = useAuth();
   const { data, isPending, isError } = useQuery({
     queryFn: () => getUserApplications(tokenData?.userId || ""),
@@ -36,12 +35,9 @@ function Interviews() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-80px)] pt-4 pb-8">
+    <div className="min-h-[calc(100vh-80px)] pt-8 pb-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <p className="text-sm uppercase tracking-[0.24em] text-sky-600 font-semibold">
-            Interviews
-          </p>
           <h1 className="mt-3 text-3xl font-bold text-slate-900 dark:text-slate-100">
             Your upcoming interviews
           </h1>
@@ -51,7 +47,7 @@ function Interviews() {
         </div>
 
         {interviews.length === 0 ? (
-          <div className="rounded-3xl bg-slate-50 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 p-10 text-center shadow-sm">
+          <div className="rounded-3xl  bg-slate-50 dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 p-10 text-center shadow-sm">
             <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100">
               No interviews scheduled yet
             </h2>
@@ -61,7 +57,7 @@ function Interviews() {
             </p>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-4 flex flex-col justify-center items-center ">
             {interviews.map((application) => (
               <InterviewCard key={application._id} application={application} />
             ))}
