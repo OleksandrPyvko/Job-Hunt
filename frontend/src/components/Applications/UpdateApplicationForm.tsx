@@ -1,16 +1,21 @@
-import { useRef, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import type { ApplicationType } from "../../types/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getApplicationById, updateApplication } from "../../api/http";
+
+const inputStyles =
+  "w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500";
+
+const labelStyles =
+  "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1";
 
 type Props = {
   applicationId: string;
   ref: React.RefObject<HTMLDialogElement>;
 };
 
-function UpdateApplicationForm({ ref, applicationId }: Props) {
+function UpdateApplicationForm({ applicationId }: Props) {
   const queryClient = useQueryClient();
-  // const formRef = useRef<HTMLFormElement | null>(null);
   const [isInterview, setIsInterview] = useState<boolean>(false);
 
   const formattedDate = new Date().toISOString().split("T")[0];
@@ -64,14 +69,12 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
     };
 
     mutate({ id: applicationId, updatedApplication });
-    // ref.current?.close();
     const popover = document.getElementById("updateApplicationPopover");
     popover?.hidePopover?.();
   }
 
   return (
     <form
-      // ref={formRef}
       onSubmit={handleSubmit}
       className="bg-indigo-50 dark:bg-neutral-900 p-6 rounded-lg shadow-lg space-y-4 min-w-96"
     >
@@ -79,16 +82,14 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
         Company
       </label>
       <input
-        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        className={inputStyles}
         name="company"
         type="text"
         defaultValue={data.company}
       />
-      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
-        Status
-      </label>
+      <label className={labelStyles}>Status</label>
       <select
-        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        className={inputStyles}
         name="status"
         id=""
         defaultValue={data.status}
@@ -102,11 +103,9 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
 
       {(isInterview || data.status === "interview") && (
         <>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
-            Interview on
-          </label>
+          <label className={labelStyles}>Interview on</label>
           <input
-            className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className={inputStyles}
             name="interview"
             defaultValue={data.interview}
             type="datetime-local"
@@ -114,39 +113,31 @@ function UpdateApplicationForm({ ref, applicationId }: Props) {
         </>
       )}
 
-      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
-        Position
-      </label>
+      <label className={labelStyles}>Position</label>
       <input
-        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        className={inputStyles}
         name="position"
         type="text"
         defaultValue={data.position}
       />
-      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
-        Location
-      </label>
+      <label className={labelStyles}>Location</label>
       <input
-        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        className={inputStyles}
         name="location"
         type="text"
         defaultValue={data.location}
       />
-      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
-        Applied on
-      </label>
+      <label className={labelStyles}>Applied on</label>
       <input
-        className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+        className={inputStyles}
         name="applied"
         defaultValue={formattedDate}
         type="date"
       />
       <div className="space-y-3">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ">
-          Notes
-        </label>
+        <label className={labelStyles}>Notes</label>
         <textarea
-          className="w-full px-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-sky-500"
+          className={inputStyles}
           name="notes"
           defaultValue={data.notes}
         />

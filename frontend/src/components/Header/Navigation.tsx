@@ -1,16 +1,12 @@
 import { useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
 import { useMenu } from "../../contexts/MenuContext";
-import Modal from "../Modal";
-import Test from "../Test";
 import NavAuth from "./NavAuth";
 
 const linkClass =
   "text-sky-500 font-semibold border-b-2 border-sky-600 transition-all duration-300 ease-in-out ";
 
 function Navigation() {
-  const { setIsLoggedIn } = useAuth();
   const { isMenuOpen, setIsMenuOpen } = useMenu();
 
   const location = useLocation();
@@ -118,9 +114,6 @@ function Navigation() {
           <NavAuth login={login} />
         </div>
       </nav>
-      {/* <Modal ref={login} onClose={() => login.current?.close()}>
-        <Test ref={login} setIsLoggedIn={setIsLoggedIn} />
-      </Modal> */}
     </>
   );
 }

@@ -1,14 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import CalendarIcon from "../Icons/CalendarIcon";
 import type { ApplicationType } from "../../types/types";
-import ListIcon from "../Icons/ListIcon";
 import SuitCase from "../Icons/SuitCase";
 import { getUserApplications } from "../../api/http";
 import { useAuth } from "../../contexts/AuthContext";
 
 function Results() {
   const { tokenData } = useAuth();
-  const { data, isLoading, error } = useQuery({
+  const { data} = useQuery({
     queryFn: () => getUserApplications(tokenData?.userId || ""),
     queryKey: ["userApplications"],
   });

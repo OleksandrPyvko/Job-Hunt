@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import heroImg from "../../assets/images/hero.png";
 
 function Hero() {
@@ -15,9 +16,9 @@ function Hero() {
         </p>
       </div>
       <div className="flex  ">
-        <button className="bg-blue-500 hover:bg-blue-600 shadow-md  hover:drop-shadow-slate-900 hover:drop-shadow-xl/30 rounded-lg w-[90%] md:w-40 h-12 text-amber-50 cursor-pointer my-10 mx-auto md:mx-0 md:mt-18   ">
+        <NavLink to="/dashboard" className="bg-blue-500 hover:bg-blue-600 text-center shadow-md hover:drop-shadow-slate-900 hover:drop-shadow-xl/30 rounded-lg w-[90%] md:w-40 h-12 text-amber-50 cursor-pointer my-10 mx-auto md:mx-0 md:mt-18 flex items-center justify-center">
           Start now
-        </button>
+        </NavLink>
       </div>
       <div>
         <img src={heroImg} alt="person" className="h-full rounded-lg" />
