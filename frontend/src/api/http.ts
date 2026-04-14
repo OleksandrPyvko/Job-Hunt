@@ -1,4 +1,4 @@
-const apiURL = import.meta.env.VITE_API_URL;
+const apiURL = import.meta.env.VITE_VITE_API_URL;
 
 export type AddApplicationType = {
   company: string;
@@ -18,7 +18,7 @@ type UserType = {
 
 export default async function addApplication(application: AddApplicationType) {
   try {
-    const response = await fetch(`${apiURL.env.API_URL}/applications`, {
+    const response = await fetch(`${apiURL.env.VITE_API_URL}/applications`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,13 +39,16 @@ export async function updateApplication(
   updatedData: AddApplicationType,
 ) {
   try {
-    const response = await fetch(`${apiURL.env.API_URL}/applications/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${apiURL.env.VITE_API_URL}/applications/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...updatedData }),
       },
-      body: JSON.stringify({ ...updatedData }),
-    });
+    );
     return await response.json();
   } catch (error) {
     console.error("Error updating application:", error);
@@ -55,7 +58,7 @@ export async function updateApplication(
 
 export async function getApplicationById(id: string) {
   try {
-    const res = await fetch(`${apiURL.env.API_URL}/applications/${id}`);
+    const res = await fetch(`${apiURL.env.VITE_API_URL}/applications/${id}`);
     if (!res.ok) {
       throw new Error("Failed to fetch application data!!!");
     }
@@ -68,7 +71,9 @@ export async function getApplicationById(id: string) {
 }
 
 export async function getUserApplications(userId: string) {
-  const res = await fetch(`${apiURL.env.API_URL}/applications/user/${userId}`);
+  const res = await fetch(
+    `${apiURL.env.VITE_API_URL}/applications/user/${userId}`,
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch applications");
   }
@@ -85,7 +90,7 @@ export async function getUserApplications(userId: string) {
 
 export async function deleteApplication(id: string) {
   try {
-    const res = await fetch(`${apiURL.env.API_URL}/applications/${id}`, {
+    const res = await fetch(`${apiURL.env.VITE_API_URL}/applications/${id}`, {
       method: "DELETE",
     });
     if (!res.ok) {
@@ -107,7 +112,7 @@ async function parseResponse(response: Response) {
 
 export async function registerUser(newUser: UserType) {
   try {
-    const response = await fetch(`${apiURL.env.API_URL}/auth/signup`, {
+    const response = await fetch(`${apiURL.env.VITE_API_URL}/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),
@@ -131,7 +136,7 @@ export async function loginUser({
   password: string;
 }) {
   try {
-    const response = await fetch(`${apiURL.env.API_URL}/auth/login`, {
+    const response = await fetch(`${apiURL.env.VITE_API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
