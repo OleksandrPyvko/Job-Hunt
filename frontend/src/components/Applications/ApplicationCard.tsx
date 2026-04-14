@@ -9,11 +9,11 @@ import DeleteIcon from "../Icons/DeleteIcon";
 
 interface ApplicationRowProps {
   application: ApplicationType;
-  index: number;
+  index?: number;
   id: string;
 }
 
-function ApplicationCard({ application, id, index }: ApplicationRowProps) {
+function ApplicationCard({ application, id }: ApplicationRowProps) {
   const queryClient = useQueryClient();
   const [expanded, setExpanded] = useState(false);
 

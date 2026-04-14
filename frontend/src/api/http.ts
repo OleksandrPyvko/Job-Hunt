@@ -1,3 +1,5 @@
+const apiURL = import.meta.env.VITE_API_URL;
+
 export type AddApplicationType = {
   company: string;
   status: string;
@@ -16,7 +18,7 @@ type UserType = {
 
 export default async function addApplication(application: AddApplicationType) {
   try {
-    const response = await fetch("http://localhost:3000/applications", {
+    const response = await fetch(`${apiURL.env.API_URL}/applications`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,10 +36,10 @@ export default async function addApplication(application: AddApplicationType) {
 
 export async function updateApplication(
   id: string,
-  updatedData: AddApplicationType
+  updatedData: AddApplicationType,
 ) {
   try {
-    const response = await fetch(`http://localhost:3000/applications/${id}`, {
+    const response = await fetch(`${apiURL.env.API_URL}/applications/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +55,7 @@ export async function updateApplication(
 
 export async function getApplicationById(id: string) {
   try {
-    const res = await fetch(`http://localhost:3000/applications/${id}`);
+    const res = await fetch(`${apiURL.env.API_URL}/applications/${id}`);
     if (!res.ok) {
       throw new Error("Failed to fetch application data!!!");
     }
@@ -66,7 +68,7 @@ export async function getApplicationById(id: string) {
 }
 
 export async function getUserApplications(userId: string) {
-  const res = await fetch(`http://localhost:3000/applications/user/${userId}`);
+  const res = await fetch(`${apiURL.env.API_URL}/applications/user/${userId}`);
   if (!res.ok) {
     throw new Error("Failed to fetch applications");
   }
@@ -83,7 +85,7 @@ export async function getUserApplications(userId: string) {
 
 export async function deleteApplication(id: string) {
   try {
-    const res = await fetch(`http://localhost:3000/applications/${id}`, {
+    const res = await fetch(`${apiURL.env.API_URL}/applications/${id}`, {
       method: "DELETE",
     });
     if (!res.ok) {
@@ -105,7 +107,7 @@ async function parseResponse(response: Response) {
 
 export async function registerUser(newUser: UserType) {
   try {
-    const response = await fetch("http://localhost:3000/auth/signup", {
+    const response = await fetch(`${apiURL.env.API_URL}/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),
@@ -129,7 +131,7 @@ export async function loginUser({
   password: string;
 }) {
   try {
-    const response = await fetch("http://localhost:3000/auth/login", {
+    const response = await fetch(`${apiURL.env.API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

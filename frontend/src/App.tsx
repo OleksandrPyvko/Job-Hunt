@@ -7,7 +7,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import { AuthContextProvider, MenuContextProvider } from "./contexts/providers";
 import Home from "./pages/Home";
-import SignUpPage from "./pages/SignUpPage";
+import SignUpPage from "./pages/SignupPage";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +54,6 @@ const router = createBrowserRouter([
         path: "signup",
         element: <SignUpPage />,
       },
-    
     ],
   },
 ]);

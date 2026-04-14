@@ -15,15 +15,19 @@ function ApplicationsList({ data }: PropsType) {
 
   return (
     <div>
-      
-      {[...sortedData].reverse().map((application, index) => (
-        <ApplicationCard
-          index={index}
-          key={application._id}
-          id={application._id}
-          application={application}
-        />
-      ))}
+      {[...sortedData]
+        .reverse()
+        .map(
+          (application, index) =>
+            application._id && (
+              <ApplicationCard
+                index={index}
+                key={application._id}
+                id={application._id}
+                application={application}
+              />
+            ),
+        )}
     </div>
   );
 }

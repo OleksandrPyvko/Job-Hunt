@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useMenu } from "../../contexts/MenuContext";
 import NavAuth from "./NavAuth";
@@ -11,7 +10,6 @@ function Navigation() {
 
   const location = useLocation();
   const path = location.pathname;
-  const login = useRef<HTMLDialogElement>(null);
 
   function onNavLinkClick() {
     setIsMenuOpen(false);
@@ -28,7 +26,7 @@ function Navigation() {
         <div
           className={` ${
             !isMenuOpen
-              ? " left-[-100%] opacity-0 pointer-events-none"
+              ? " -left-full opacity-0 pointer-events-none"
               : "opacity-100 pointer-events-auto"
           } duration-500 ease-in-out bg-white dark:bg-(--darkbg)   md:hidden text-xl max-h-[calc(100dvh-70px)] h-full text-left md:flex-row fixed left-0 bottom-0  w-screen   overflow-hidden flex flex-col justify-between`}
         >
@@ -73,7 +71,7 @@ function Navigation() {
             </li>
           </ul>
           <div className="flex justify-center items-center py-14">
-            <NavAuth login={login} />
+            <NavAuth />
           </div>
         </div>
 
@@ -111,7 +109,7 @@ function Navigation() {
               </NavLink>
             </li>
           </ul>
-          <NavAuth login={login} />
+          <NavAuth />
         </div>
       </nav>
     </>
