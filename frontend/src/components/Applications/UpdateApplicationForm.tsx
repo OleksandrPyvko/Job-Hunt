@@ -11,10 +11,10 @@ const labelStyles =
 
 type Props = {
   applicationId: string;
-  ref: React.RefObject<HTMLDialogElement>;
+  popoverId: string;
 };
 
-function UpdateApplicationForm({ applicationId }: Props) {
+function UpdateApplicationForm({ applicationId, popoverId }: Props) {
   const queryClient = useQueryClient();
   const [isInterview, setIsInterview] = useState<boolean>(false);
 
@@ -69,7 +69,7 @@ function UpdateApplicationForm({ applicationId }: Props) {
     };
 
     mutate({ id: applicationId, updatedApplication });
-    const popover = document.getElementById("updateApplicationPopover");
+    const popover = document.getElementById(popoverId);
     popover?.hidePopover?.();
   }
 
@@ -100,7 +100,6 @@ function UpdateApplicationForm({ applicationId }: Props) {
         <option value="offer">Offer</option>
         <option value="rejected">Rejected</option>
       </select>
-
       {(isInterview || data.status === "interview") && (
         <>
           <label className={labelStyles}>Interview on</label>
@@ -112,7 +111,6 @@ function UpdateApplicationForm({ applicationId }: Props) {
           />
         </>
       )}
-
       <label className={labelStyles}>Position</label>
       <input
         className={inputStyles}
@@ -144,7 +142,6 @@ function UpdateApplicationForm({ applicationId }: Props) {
       </div>
       <div className="flex ">
         <button
-          popoverTarget="updateApplicationPopover"
           className="flex-1 bg-sky-500 hover:bg-sky-600 dark:bg-sky-600 dark:hover:bg-sky-700 text-white font-semibold py-2 rounded-md transition-colors"
           type="submit"
         >

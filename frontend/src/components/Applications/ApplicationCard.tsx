@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deleteApplication } from "../../api/http";
 import type { ApplicationType } from "../../types/types";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import UpdateApplicationForm from "./UpdateApplicationForm";
 import StatusBadge from "./StatusBadge";
 import EditIcon from "../Icons/EditIcon";
@@ -17,7 +17,7 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
   const queryClient = useQueryClient();
   const [expanded, setExpanded] = useState(false);
 
-  const dialog = useRef<HTMLDialogElement | null>(null);
+  const popoverId = `updateApplicationPopover-${id}`;
 
   const { mutate: deleteMutation } = useMutation({
     mutationFn: (id: string) => deleteApplication(id),
@@ -35,7 +35,6 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
     if (!confirmed) return;
     deleteMutation(id);
   }
-
 
   return (
     <>
@@ -74,7 +73,7 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
                 <StatusBadge status={application.status} />
                 <div className="flex items-center gap-2">
                   <button
-                    popoverTarget={`updateApplicationPopover`}
+                    popoverTarget={popoverId}
                     aria-label={`Edit application at ${application.company}`}
                     className="p-2 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-400"
                   >
@@ -124,15 +123,13 @@ function ApplicationCard({ application, id, index }: ApplicationRowProps) {
         </div>
       </div>
 
-
       <div
-        id="updateApplicationPopover"
+        id={popoverId}
         popover="auto"
         className="fixed  left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl z-50 bg-white dark:bg-slate-900 opacity-100 starting:open:opacity-0 transition-all ease-in-out duration-500 "
       >
-        <UpdateApplicationForm ref={dialog} applicationId={id} />
+        <UpdateApplicationForm applicationId={id} popoverId={popoverId} />
       </div>
-
     </>
   );
 }
