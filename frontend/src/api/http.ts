@@ -1,4 +1,4 @@
-const apiURL = import.meta.env.VITE_VITE_API_URL;
+const apiURL = import.meta.env.VITE_API_URL;
 
 export type AddApplicationType = {
   company: string;
@@ -18,7 +18,7 @@ type UserType = {
 
 export default async function addApplication(application: AddApplicationType) {
   try {
-    const response = await fetch(`${apiURL.env.VITE_API_URL}/applications`, {
+    const response = await fetch(`${apiURL}/applications`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
